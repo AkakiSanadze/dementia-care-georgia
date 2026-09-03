@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2942"/>
+      <stop offset="100%" stop-color="#173B5E"/>
+    </linearGradient>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E8A7D"/>
+      <stop offset="100%" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle inner border ring -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+
+  <!-- Protective Home Roof and Body -->
+  <path d="M256 100 L116 218 L116 396 A24 24 0 0 0 140 420 L372 420 A24 24 0 0 0 396 396 L396 218 Z" 
+        fill="none" stroke="#F8FAFC" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)"/>
+
+  <!-- Warm Caring Heart In Center -->
+  <path d="M256 364 
+           C256 364, 184 304, 184 244 
+           A38 38 0 0 1 256 220 
+           A38 38 0 0 1 328 244 
+           C328 304, 256 364, 256 364 Z" 
+        fill="url(#heartGrad)" filter="url(#shadow)"/>
+        
+  <!-- Subtle Guiding Light / Spark of Hope -->
+  <circle cx="256" cy="180" r="14" fill="url(#goldGrad)"/>
+</svg>

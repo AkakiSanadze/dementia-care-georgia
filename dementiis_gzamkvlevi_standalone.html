@@ -27,8 +27,10 @@
   <meta name="twitter:description" content="პრაქტიკული ცნობარი ოჯახებისთვის: დემენციის ქცევითი სიმპტომების მართვა, კომუნიკაცია, უსაფრთხო სახლი და მოვლა.">
   <meta name="twitter:image" content="https://dementia-care-georgia.vercel.app/og-image.png">
   
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F2942'/%3E%3Cpath d='M20 18h24v28H20z' fill='none' stroke='%23F8FAFC' stroke-width='4'/%3E%3Cpath d='M20 26h24M20 34h16' stroke='%230E8A7D' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <!-- Favicons & Touch Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <!-- Google Fonts (Georgian) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +63,7 @@
             "name": "რატომ ავიწყდება პაციენტს ახლობლების სახელები და სახეები?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "ეს არის აგნოზიისა და რეტროგრადული ამნეზიის შედეგი. საფეთქლისა და თხემის წილების დაზიანების გამო ტვინი კარგავს სახელებისა და სახეების დაკავშირების უნარს. არავერბალური და ემოციური მეხსიერება ხანგრძლივად რჩება."
+              "text": "ეს გამოწვეულია ტვინის იმ უბნების დაზიანებით, რომლებიც პასუხისმგებელია სახეების ცნობასა (აგნოზია) და წარსულის გახსენებაზე. ადამიანი კარგავს სახელებისა და ნაცნობი სახეების დაკავშირების უნარს, თუმცა ემოციური მეხსიერება ბოლომდე რჩება."
             }
           },
           {
@@ -93,7 +95,7 @@
             "name": "შეიძლება თუ არა პაციენტს მივცეთ საძილე ან დამამშვიდებელი (ბენზოდიაზეპინები)?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "კატეგორიულად დაუშვებელია თვითნებურად! ბენზოდიაზეპინები მკვეთრად ზრდის ღამის დაცემის, მოტეხილობების, მწვავე დელირიუმისა და პარადოქსული აგრესიის რისკს."
+              "text": "კატეგორიულად დაუშვებელია თვითნებურად! საძილეები და დამამშვიდებლები მკვეთრად ზრდის ღამით დაცემის, მოტეხილობების, უეცარი მწვავე დაბნეულობისა (დელირიუმის) და მოულოდნელი აგრესიის რისკს."
             }
           }
         ]
@@ -2528,32 +2530,159 @@ blockquote {
 }
 
 /* ==========================================================================
-   Print Styles
+   Print Document (Screen Hidden, Print Visible)
    ========================================================================== */
 
+.print-document {
+  display: none !important;
+}
+
 @media print {
+  @page {
+    margin: 10mm;
+    size: A4 portrait;
+  }
+
   body {
     background: #FFF !important;
-    color: #000 !important;
-    font-size: 11pt;
-    line-height: 1.5;
+    color: #111 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Georgian", system-ui, sans-serif !important;
+    font-size: 9.2pt !important;
+    line-height: 1.38 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  .site-header, .site-drawer, .drawer-overlay, .app-toast, .btn-row, #themeToggleBtn, #ambientToggleBtn, .font-btn-group, .breathing-section, #navToggle, .painad-result-actions, .category-filter-bar, .search-container {
+
+  /* Hide all interactive screen elements */
+  .skip-link,
+  .site-header,
+  .site-drawer,
+  .nav-backdrop,
+  #mainContent,
+  .site-footer,
+  .app-toast,
+  .modal-overlay {
     display: none !important;
   }
-  .visitor-memo-card, .painad-calculator-box, .safety-checklist-box, .hero-stat-card, .faq-item {
-    border: 1px solid #CCC !important;
-    box-shadow: none !important;
-    page-break-inside: avoid;
-  }
-  .faq-answer {
+
+  /* Show dedicated printable handbook */
+  .print-document {
     display: block !important;
-    max-height: none !important;
-    opacity: 1 !important;
-  }
-  .wrap {
+    width: 100% !important;
     max-width: 100% !important;
+    margin: 0 !important;
     padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    border-bottom: 2.5px solid #0F2942 !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .print-title {
+    font-size: 14pt !important;
+    font-weight: 800 !important;
+    color: #0F2942 !important;
+    margin: 0 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .print-subtitle {
+    font-size: 8.5pt !important;
+    color: #555 !important;
+    margin: 3px 0 0 !important;
+  }
+
+  .print-emergency-badge {
+    background: #C0392B !important;
+    color: #FFF !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    font-size: 9.5pt !important;
+    white-space: nowrap !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-section {
+    margin-bottom: 11px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-section-title {
+    font-size: 10.5pt !important;
+    font-weight: 700 !important;
+    color: #0F2942 !important;
+    border-bottom: 1px solid #CBD5E1 !important;
+    padding-bottom: 3px !important;
+    margin: 0 0 6px !important;
+  }
+
+  .print-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .print-box {
+    border: 1px solid #CBD5E1 !important;
+    background: #F8FAFC !important;
+    padding: 7px 9px !important;
+    border-radius: 4px !important;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8.3pt !important;
+    margin-top: 4px !important;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1px solid #CBD5E1 !important;
+    padding: 4px 6px !important;
+    text-align: left !important;
+  }
+
+  .print-table th {
+    background: #F1F5F9 !important;
+    font-weight: 700 !important;
+    color: #1E293B !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-checklist-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px 10px !important;
+    font-size: 8.3pt !important;
+  }
+
+  .print-check-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .print-box-sq {
+    width: 10px !important;
+    height: 10px !important;
+    border: 1.2px solid #334155 !important;
+    border-radius: 2px !important;
+    display: inline-block !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
   }
 }
 
@@ -2620,18 +2749,12 @@ blockquote {
           <button class="font-btn" id="fontIncreaseBtn" type="button" aria-label="შრიფტის გაზრდა">A+</button>
         </div>
 
-        <!-- Ambient Rain Toggle -->
-        <button class="action-btn" id="ambientToggleBtn" type="button" aria-label="დამამშვიდებელი წვიმის ხმა" title="წვიმის დამამშვიდებელი ხმის ჩართვა">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-            <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>
-            <path d="M8 19v2M12 18v2M16 19v2"/>
-          </svg>
-        </button>
-
-        <!-- Theme Toggle -->
-        <button class="action-btn" id="themeToggleBtn" type="button" aria-label="ღამის რეჟიმის გადართვა" title="თემის შეცვლა">
+        <!-- Theme Toggle (Day / Night / System) -->
+        <button class="action-btn" id="themeToggleBtn" type="button" aria-label="თემის გადართვა (დღე / ღამე / სისტემური)" title="თემა: სისტემური (ავტომატური)">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
           </svg>
         </button>
 
@@ -2685,7 +2808,7 @@ blockquote {
         <span class="drawer-group-title">გარემო და პრაქტიკა</span>
         <ul class="drawer-links">
           <li><a href="#home-safety"><span class="link-bullet">6</span> უსაფრთხო გარემო სახლში</a></li>
-          <li><a href="#sundowning"><span class="link-bullet">7</span> Sundowning სინდრომი</a></li>
+          <li><a href="#sundowning"><span class="link-bullet">7</span> საღამოს შფოთვა (Sundowning)</a></li>
           <li><a href="#breathing"><span class="link-bullet">8</span> 4-7-8 სუნთქვის ტექნიკა</a></li>
           <li><a href="#red-flags"><span class="link-bullet">9</span> გადაუდებელი წითელი ალმები</a></li>
           <li><a href="#visitor-memo"><span class="link-bullet">10</span> ვიზიტორთა მემორანდუმი</a></li>
@@ -2813,18 +2936,18 @@ blockquote {
         <div class="grid-3">
           <article class="card">
             <div class="card-num">1</div>
-            <h3>მოკლევადიანი მეხსიერების ხარვეზი</h3>
-            <p>ჰიპოკამპის დაზიანების გამო ახალი ინფორმაცია ვეღარ ფიქსირდება. პაციენტს არ ახსოვს, რომ 2 წუთის წინ უკვე მიიღო პასუხი. ეს არ არის ყურადღების დეფიციტი ან სიჯიუტე — ინფორმაცია უბრალოდ ვერ აღწევს მეხსიერების კონსოლიდაციის ეტაპს.</p>
+            <h3>ახალი ამბების დავიწყება</h3>
+            <p>ტვინის მეხსიერების ცენტრის (ჰიპოკამპის) დაზიანების გამო ახალი ინფორმაცია ვეღარ იწერება. ადამიანს არ ახსოვს, რომ 2 წუთის წინ უკვე მიიღო პასუხი. ეს არ არის სიჯიუტე — ახალი ამბავი გონებაში უბრალოდ ვეღარ ინახება.</p>
           </article>
           <article class="card">
             <div class="card-num">2</div>
-            <h3>რეტროგრადული დეზორიენტაცია</h3>
-            <p>დემენცია ხშირად რიბოს კანონის მიხედვით ვითარდება: ჯერ ქრება ბოლო წლების მოვლენები, ხოლო ძველი მოგონებები შენარჩუნებულია. პაციენტი შესაძლოა თავს აღიქვამდეს ათწლეულების წინანდელ რეალობაში (სამსახური, პატარა შვილები). ამ დროს ფაქტებით შეკამათება იწვევს მწვავე პანიკას.</p>
+            <h3>წარსულში დაბრუნება (დროში გადაადგილება)</h3>
+            <p>მეხსიერება წარსულისკენ იშლება (რიბოს კანონი): ჯერ ქრება ბოლო დღეებისა და წლების ამბები, ხოლო ახალგაზრდობის მოგონებები დიდხანს რჩება. ადამიანი თავს შესაძლოა 30 წლის წინანდელ რეალობაში აღიქვამდეს (სამსახური, პატარა შვილები). ამ დროს ფაქტებით შეკამათება მხოლოდ შიშსა და პანიკას იწვევს.</p>
           </article>
           <article class="card">
             <div class="card-num">3</div>
-            <h3>აფაზია და არავერბალური ენა</h3>
-            <p>მეტყველების ცენტრების დეგენერაცია ართულებს ტკივილის, შიმშილის, წყურვილის ან ფიზიოლოგიური დისკომფორტის ვერბალურად გადმოცემას. შედეგად, ნებისმიერი ფიზიკური დისკომფორტი გამოიხატება მოუსვენრობით, ყვირილით ან კვებაზე/ჰიგიენაზე უარით.</p>
+            <h3>მეტყველების გაძნელება (აფაზია) და სხეულის ენა</h3>
+            <p>მეტყველების ცენტრების დაზიანება ართულებს ტკივილის, შიმშილის, წყურვილის ან დისკომფორტის სიტყვებით გადმოცემას. შედეგად, ადამიანი თავის გასაჭირს გამოხატავს სხეულის ენით — მოუსვენრობით, ყვირილით ან ჭამასა და დაბანაზე უარით.</p>
           </article>
         </div>
 
@@ -3053,7 +3176,7 @@ blockquote {
                   <span style="font-size: 0.8rem; color: var(--danger); font-weight: 600;">ყველაზე ხშირი მიზეზი</span>
                 </div>
               </div>
-              <p>იწვევს უეცარ დელირიუმს (რამდენიმე საათში მკვეთრ აჟიტაციას, ჰალუცინაციებსა და წვას). პაციენტი მოუსვენრადაა, ცდილობს ტანსაცმლის გახდას.</p>
+              <p>იწვევს უეცარ მწვავე დაბნეულობასა და გონების არევას (დელირიუმს) — რამდენიმე საათში მკვეთრ მოუსვენრობას, ჰალუცინაციებსა და წვას. ადამიანი მოუსვენრადაა და ცდილობს ტანსაცმლის გახდას.</p>
               <div class="pain-action-tip">
                 <strong>მოქმედება:</strong> შარდის საერთო ანალიზი და ექიმის დაუყოვნებლივი კონსულტაცია.
               </div>
@@ -3143,7 +3266,7 @@ blockquote {
 
             <!-- 2. Vocalization -->
             <div class="painad-item" data-category="vocalization">
-              <span class="painad-item-label">2. ნეგატიური ვოკალიზაცია</span>
+              <span class="painad-item-label">2. ხმოვანი გამოხატვა (კვნესა, ყვირილი)</span>
               <div class="painad-options">
                 <button type="button" class="painad-opt active" data-score="0">
                   <strong>0 ქულა</strong>
@@ -3193,14 +3316,14 @@ blockquote {
                 </button>
                 <button type="button" class="painad-opt" data-score="2">
                   <strong>2 ქულა</strong>
-                  <span>რიგიდობა, დარტყმის მცდელობა, მოკეცვა</span>
+                  <span>კუნთების მკვეთრი დაჭიმულობა/გაშეშება, მოკეცვა</span>
                 </button>
               </div>
             </div>
 
             <!-- 5. Consolability -->
             <div class="painad-item" data-category="consolability">
-              <span class="painad-item-label">5. დამშვიდებადობა</span>
+              <span class="painad-item-label">5. დამშვიდების შესაძლებლობა</span>
               <div class="painad-options">
                 <button type="button" class="painad-opt active" data-score="0">
                   <strong>0 ქულა</strong>
@@ -3309,7 +3432,7 @@ blockquote {
               </div>
               <div class="safety-item-good">
                 <strong>✅ სწორი გადაწყვეტა: ერთგვაროვანი ღია იატაკი</strong>
-                მოაშორეთ პატარა მუქი ფიანდაზები. გამოიყენეთ ერთგვაროვანი ღია იატაკი და დაამონტაჟეთ ღამის მოძრაობის სენსორიანი დაბალი განათება იატაკის დონეზე.
+                მოაშორეთ პატარა მუქი ხალიჩები და ფეხსაგებები. გამოიყენეთ ერთგვაროვანი ღია იატაკი და დაამონტაჟეთ ღამის მოძრაობის სენსორიანი დაბალი განათება იატაკის დონეზე.
               </div>
             </div>
           </article>
@@ -3341,7 +3464,7 @@ blockquote {
             <div class="safety-compare-row">
               <div class="safety-item-bad">
                 <strong>❌ საფრთხე: თეთრი უნიტაზი თეთრ კაფელზე</strong>
-                სივრცითი აგნოზიის გამო თეთრი უნიტაზი თეთრ ფონზე შეუმჩნეველია. პაციენტს ეშინია დაჯდომა, რადგან ვერ ხედავს საყრდენს, რაც იწვევს ინკონტინენციას.
+                სივრცითი აღქმის დარღვევის გამო თეთრი უნიტაზი თეთრ ფილებზე შეუმჩნეველია. პაციენტს ეშინია დაჯდომა, რადგან ვერ არჩევს საყრდენს, რაც ხშირად იწვევს შარდის უნებლიე შეუკავებლობას.
               </div>
               <div class="safety-item-good">
                 <strong>✅ სწორი გადაწყვეტა: კონტრასტული დასაჯდომი და სახელურები</strong>
@@ -3395,7 +3518,7 @@ blockquote {
             <label class="checklist-item">
               <input type="checkbox" class="safety-check" data-index="0">
               <span class="checklist-custom-box" aria-hidden="true">✓</span>
-              <span class="checklist-text"><strong>1. დერეფანი:</strong> მუქი, შავი და პატარა ფიანდაზები სრულად მოშორებულია</span>
+              <span class="checklist-text"><strong>1. დერეფანი:</strong> მუქი, შავი და პატარა ხალიჩები ან ფეხსაგებები სრულად მოშორებულია</span>
             </label>
             <label class="checklist-item">
               <input type="checkbox" class="safety-check" data-index="1">
@@ -3442,29 +3565,29 @@ blockquote {
       <div class="wrap">
         <div class="sundown-banner">
           <div>
-            <span class="eyebrow">ცირკადული რიტმის დარღვევა</span>
-            <h3>Sundowning — საღამოს აჟიტაციის სინდრომი</h3>
+            <span class="eyebrow">დღე-ღამის ბუნებრივი რიტმის დარღვევა</span>
+            <h3>Sundowning — საღამოს შფოთვისა და მოუსვენრობის სინდრომი</h3>
             <p>
-              მზის ჩასვლასთან ერთად გადაღლილი ცერებრალური ქერქი ვეღარ ამუშავებს სენსორულ იმპულსებს. შებინდებისას შეცვლილი განათება და ოთახში გაჩენილი ჩრდილები აძლიერებს დეზორიენტაციას, რასაც პაციენტი აღიქვამს როგორც საფრთხეს.
+              მზის ჩასვლასთან ერთად გადაღლილი თავის ტვინი ვეღარ უმკლავდება გარემოს გაღიზიანებას. შებინდებისას შეცვლილი შუქი და ოთახში გაჩენილი ჩრდილები აძლიერებს დაბნეულობას, რასაც ადამიანი აღიქვამს როგორც საფრთხეს.
             </p>
           </div>
 
           <div class="sundown-tips-grid">
             <div class="sundown-tip">
-              <strong>1. ინსოლაცია და ადრეული განათება</strong>
-              <span>დაბინდებამდე ადრევე ჩართეთ ოთახში კაშკაშა, თბილი განათება, რათა ოთახში არ წარმოიქმნას კონტრასტული ჩრდილები.</span>
+              <strong>1. ბუნებრივი მზის სინათლე და ადრეული განათება</strong>
+              <span>დილით შემოუშვით ოთახში ბუნებრივი მზის სინათლე (დღის შუქი), ხოლო დაბინდებამდე ადრევე ჩართეთ თბილი განათება, რათა ოთახში არ წარმოიქმნას საშიში ჩრდილები.</span>
             </div>
             <div class="sundown-tip">
               <strong>2. კოფეინისა და შაქრის შეზღუდვა</strong>
-              <span>ნაშუადღევს მოერიდეთ ჩაის, ყავასა და მარტივ ნახშირწყლებს, რომლებიც ცენტრალურ ნერვულ სისტემას აღაგზნებს.</span>
+              <span>ნაშუადღევს მოერიდეთ ჩაის, ყავასა და ტკბილეულს, რომლებიც ნერვულ სისტემას აღაგზნებს.</span>
             </div>
             <div class="sundown-tip">
-              <strong>3. აკუსტიკური სტაბილიზაცია</strong>
-              <span>ჩართეთ დაბალ ხმაზე მშვიდი, პაციენტისთვის ახალგაზრდობიდან ნაცნობი მუსიკა ან თეთრი ხმაური.</span>
+              <strong>3. მშვიდი ხმოვანი გარემო</strong>
+              <span>ჩართეთ დაბალ ხმაზე მშვიდი, პაციენტისთვის ახალგაზრდობიდან ნაცნობი მუსიკა ან ბუნების ხმები.</span>
             </div>
             <div class="sundown-tip">
               <strong>4. რთული პროცედურების გადატანა</strong>
-              <span>ჰიგიენური პროცედურები (დაბანა, გამოცვლა) დაგეგმეთ დილის ან შუადღის საათებში და არა საღამოს.</span>
+              <span>დაბანა და ტანსაცმლის გამოცვლა დაგეგმეთ დილის ან შუადღის საათებში და არა საღამოს.</span>
             </div>
           </div>
         </div>
@@ -3555,24 +3678,24 @@ blockquote {
             <div class="red-flag-item">
               <div class="red-flag-icon">1</div>
               <div>
-                <strong>დელირიუმი და ფარული ინფექცია (მაგ. UTI)</strong>
-                <p>შარდგამომყოფი გზების ინფექცია ხანდაზმულებში ხშირად ტემპერატურის გარეშე მიმდინარეობს და იწვევს <strong>უეცარ აგრესიას, მწვავე ჰალუცინაციებსა და ძლიერ დაბნეულობას</strong>. შარდის ანალიზი პირველი კლინიკური ნაბიჯია.</p>
+                <strong>უეცარი მწვავე დაბნეულობა და გონების არევა (დელირიუმი)</strong>
+                <p>თუ ადამიანს რამდენიმე საათში ან 1-2 დღეში უეცრად აერია გონება, გაუჩნდა ჰალუცინაციები ან მწვავე მოუსვენრობა, ეს თითქმის ყოველთვის ფარული ფიზიკური ინფექციის (მაგალითად, შარდის ინფექციის — UTI) ბრალია. ხანდაზმულებში ინფექცია ხშირად სიცხის გარეშე მიმდინარეობს. შარდის ანალიზი და ექიმის ჩართვა პირველი ნაბიჯია.</p>
               </div>
             </div>
 
             <div class="red-flag-item">
               <div class="red-flag-icon">2</div>
               <div>
-                <strong>მწვავე ცერებროვასკულური ეპიზოდი ან ტრავმა (FAST პროტოკოლი)</strong>
-                <p>სახის ასიმეტრია (Face), კიდურების ცალმხრივი სისუსტე (Arm), მეტყველების უეცარი გაძნელება (Speech). <strong>T (Time — დრო გადამწყვეტია):</strong> გამოიძახეთ სასწრაფო დახმარება (112) დაუყოვნებლივ, პირველივე საათებში თერაპიული ფანჯრის დასაცავად. დემენციისას ადამიანი ვერ გადმოგცემთ თავის ტრავმას — აუცილებელია სხეულის რეგულარული დათვალიერებაც.</p>
+                <strong>ინსულტის საგანგაშო ნიშნები (FAST წესი) ან ტრავმა</strong>
+                <p><strong>F (Face)</strong> — სახის ასიმეტრია, <strong>A (Arm)</strong> — ხელის ან ფეხის უეცარი სისუსტე, <strong>S (Speech)</strong> — მეტყველების უეცარი გაძნელება ან არევა. <strong>T (Time — დრო გადამწყვეტია):</strong> დაუყოვნებლივ დარეკეთ 112-ში! ყოველი წუთი მნიშვნელოვანია. ასევე, დემენციის მქონე ადამიანი დაცემის ან თავის დარტყმის შესახებ ვერ გეტყვით — შეამოწმეთ სხეული სისხლჩაქცევებზე.</p>
               </div>
             </div>
 
             <div class="red-flag-item">
               <div class="red-flag-icon">3</div>
               <div>
-                <strong>გაუწყლოება (დეჰიდრატაცია)</strong>
-                <p>ჩაცვენილი თვალები, მუქი შარდი, მშრალი ლორწოვანი გარსები, გამოხატული სისუსტე და სოპორი. პაციენტებს ხშირად უქვეითდებათ წყურვილის შეგრძნება ან ავიწყდებათ სითხის მიღება.</p>
+                <strong>ორგანიზმის გაუწყლოება (დეჰიდრატაცია)</strong>
+                <p>ჩაცვენილი თვალები, მუქი შარდი, გამომშრალი ტუჩები და ენა, უჩვეულო სისუსტე ან მუდმივი ძილიანობა. დემენციის დროს ადამიანები წყურვილს ვეღარ გრძნობენ და წყლის დალევა ავიწყდებათ.</p>
               </div>
             </div>
           </div>
@@ -3665,9 +3788,9 @@ blockquote {
             </article>
 
             <article class="card">
-              <h3 style="color: var(--ink); margin-top: 0;">ჰიდრატაციის წესი და უსაფრთხოება</h3>
+              <h3 style="color: var(--ink); margin-top: 0;">წყლის მიღების წესი და უსაფრთხოება</h3>
               <p style="margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5;">
-                დემენციის მქონე ადამიანები კარგავენ წყურვილის შეგრძნებას. დეჰიდრატაცია პირდაპირ იწვევს დელირიუმსა და წნევის ვარდნას. შესთავაზეთ წყალი მცირე ყლუპებით ყოველ 1–1.5 საათში, გამჭვირვალე ჭიქით (არა შეკითხვით „გინდა წყალი?“, არამედ მიწოდებით „აი, გრილი წყალია“). <strong>ყლაპვის გაძნელებისას (დისფაგია):</strong> მოერიდეთ ერთბაშად დიდი რაოდენობით სითხის მიცემას სასულეში გადაცდენის (ასპირაციის) პრევენციისთვის.
+                დემენციის დროს ადამიანები წყურვილს ვეღარ გრძნობენ. ორგანიზმის გაუწყლოება კი პირდაპირ იწვევს უეცარ მწვავე დაბნეულობასა (დელირიუმს) და წნევის ვარდნას. შესთავაზეთ წყალი მცირე ყლუპებით ყოველ 1–1.5 საათში, გამჭვირვალე ჭიქით (არა შეკითხვით „გინდა წყალი?“, არამედ ჭიქის მიწოდებით: „აი, გრილი წყალია“). <strong>ყლაპვის გაძნელებისას:</strong> მოერიდეთ ერთბაშად ბევრი სითხის მიცემას, რათა წყალი სასულეში არ გადასცდეს (ასპირაცია).
               </p>
             </article>
           </div>
@@ -3690,7 +3813,7 @@ blockquote {
               <span class="faq-icon" aria-hidden="true">↓</span>
             </button>
             <div class="faq-answer">
-              ეს არის აგნოზიისა და რეტროგრადული ამნეზიის შედეგი. საფეთქლისა და თხემის წილების დაზიანების გამო ტვინი კარგავს სახელებისა და სახეების დაკავშირების უნარს. ამის მიუხედავად, არავერბალური და ემოციური მეხსიერება (ნაცნობი ხმის ტემბრი, შეხების სითბო, უსაფრთხოების განცდა) ხანგრძლივად რჩება. რეკომენდებულია პაციენტს თავი შეახსენოთ მშვიდად და უსაყვედუროდ: „მე ნინო ვარ, შენი შვილი“, სატესტო შეკითხვების გარეშე.
+              ეს გამოწვეულია ტვინის იმ უბნების დაზიანებით, რომლებიც პასუხისმგებელია სახეების ცნობასა (აგნოზია) და წარსულის გახსენებაზე. ადამიანი კარგავს სახელებისა და ნაცნობი სახეების დაკავშირების უნარს. ამის მიუხედავად, ემოციური მეხსიერება (ნაცნობი ხმის ტემბრი, შეხების სითბო, უსაფრთხოების განცდა) ბოლომდე რჩება. რეკომენდებულია ადამიანს თავი შეახსენოთ მშვიდად და უსაყვედუროდ: „მე ნინო ვარ, შენი შვილი“, საგამოცდო შეკითხვების გარეშე („მიცანი? ვინ ვარ?“).
             </div>
           </div>
 
@@ -3760,7 +3883,7 @@ blockquote {
               <span class="faq-icon" aria-hidden="true">↓</span>
             </button>
             <div class="faq-answer">
-              <strong>კატეგორიულად დაუშვებელია თვითნებურად!</strong> საერთაშორისო კლინიკური გაიდლაინებით (NICE, Beers Criteria), ჩვეულებრივი საძილე საშუალებები და ბენზოდიაზეპინები (დიაზეპამი, ფენაზეპამი და სხვ.) დემენციის მქონე ხანდაზმულებში იწვევს კატასტროფულ შედეგებს: მკვეთრად ზრდის ღამის დაცემის, ბარძაყის ყელის მოტეხილობის, მწვავე დელირიუმისა და პარადოქსული აგრესიის რისკს. ღამის მოუსვენრობისას უპირველესია არა-მედიკამენტური მეთოდები (დღის სინათლე, კოფეინის შეზღუდვა, ტკივილის/შარდის გამორიცხვა). ნებისმიერი ფარმაკოლოგიური ჩარევა დასაშვებია მხოლოდ ფსიქიატრის ან ნევროლოგის უშუალო დანიშნულებით.
+              <strong>კატეგორიულად დაუშვებელია თვითნებურად!</strong> საერთაშორისო კლინიკური გაიდლაინებით, ჩვეულებრივი საძილე საშუალებები და დამამშვიდებლები (მაგ. დიაზეპამი, ფენაზეპამი და სხვ.) დემენციის დროს საშიშია: მკვეთრად ზრდის ღამით დაცემის, ბარძაყის მოტეხილობის, უეცარი მწვავე დაბნეულობისა (დელირიუმის) და მოულოდნელი აგრესიის რისკს. ღამის მოუსვენრობისას უპირველესია უწამლო გზები: დღის შუქი, კოფეინის შეზღუდვა, ტკივილის ან შარდის შემოწმება. ნებისმიერი დამამშვიდებელი მედიკამენტი უნდა დანიშნოს მხოლოდ ექიმმა-ფსიქიატრმა ან ნევროლოგმა.
             </div>
           </div>
 
@@ -3826,6 +3949,187 @@ blockquote {
       © <span id="copyrightYear">2026</span> დემენცია ოჯახში. საინფორმაციო და პრაქტიკული რესურსი ოჯახებისთვის.
     </div>
   </footer>
+
+  <!-- =========================================================================
+       PRINT-ONLY ADAPTED HANDBOOK (ამობეჭდვისა და PDF-ის სპეციალური დოკუმენტი)
+       ეს ბლოკი ეკრანზე დამალულია (display: none) და ჩნდება მხოლოდ ბეჭდვისას
+       ========================================================================= -->
+  <section class="print-document" id="printDocument" aria-hidden="true">
+    <div class="print-header">
+      <div>
+        <h1 class="print-title">დემენცია ოჯახში — პრაქტიკული და კლინიკური გზამკვლევი</h1>
+        <p class="print-subtitle">სწრაფი ცნობარი და მემორანდუმი მომვლელებისთვის | dementia-care-georgia.vercel.app</p>
+      </div>
+      <div class="print-emergency-badge">
+        <span>სასწრაფო დახმარება: <strong>112</strong></span>
+      </div>
+    </div>
+
+    <!-- 1. Red Flags -->
+    <div class="print-section">
+      <h2 class="print-section-title">1. გადაუდებელი „წითელი ალმები“ (დაუყოვნებელი რეაგირება)</h2>
+      <div class="print-grid-2">
+        <div class="print-box">
+          <strong>🚨 ინსულტის ნიშნები — FAST წესი (დაუყოვნებლივ 112):</strong>
+          <ul style="margin: 4px 0 0; padding-left: 18px;">
+            <li><strong>F (Face)</strong> — სახის ასიმეტრია, პირის კუთხის ჩამოწევა</li>
+            <li><strong>A (Arm)</strong> — ხელის ან ფეხის უეცარი სისუსტე/ჩამოვარდნა</li>
+            <li><strong>S (Speech)</strong> — მეტყველების უეცარი გაძნელება ან არევა</li>
+            <li><strong>T (Time)</strong> — დრო გადამწყვეტია! სასწრაფოდ გამოიძახეთ 112</li>
+          </ul>
+        </div>
+        <div class="print-box">
+          <strong>⚠️ უეცარი მწვავე დაბნეულობა (დელირიუმი):</strong>
+          <p style="margin: 4px 0 0;">
+            თუ გონების არევა და მწვავე აჟიტაცია განვითარდა რამდენიმე საათში ან 1-2 დღეში — ეს თითქმის ყოველთვის ფარული ფიზიკური ინფექციის (მაგ. შარდსასქესო UTI) ან გაუწყლოების ნიშანია. აუცილებელია შარდის ანალიზი და ექიმის ჩართვა.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Golden Rules -->
+    <div class="print-section">
+      <h2 class="print-section-title">2. კომუნიკაციის 5 ოქროს წესი</h2>
+      <div class="print-grid-2">
+        <div class="print-box">
+          <strong>1. არასოდეს შეეკამათოთ ფაქტებზე:</strong> მოახდინეთ ემოციის ვალიდაცია („ვიცი, რომ გენატრება...“).<br>
+          <strong>2. მიუახლოვდით ყოველთვის წინიდან:</strong> თვალის დონეზე (გვირაბისებრი ხედვის გამო გვერდიდან მიახლოება აშინებს).<br>
+          <strong>3. შეცვალეთ „შენ“ ფორმულირება „მე“-თი:</strong> „მე მჭირდება შენი დახმარება“ (ნაცვლად „წამოდი, უნდა გაგბანო“).
+        </div>
+        <div class="print-box">
+          <strong>4. Hand-under-Hand (ხელი ხელის ქვეშ):</strong> კოვზის ან სავარცხლის ჭერისას თქვენი ხელი მოათავსეთ პაციენტის ხელის <strong>ქვემოდან</strong> (ზემოდან ჩაჭიდება იწვევს ბრძოლის რეფლექსს).<br>
+          <strong>5. მოკლე, 1-ნაბიჯიანი ინსტრუქციები:</strong> მიეცით დრო პასუხისთვის (მინიმუმ 5–10 წამი).
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Word Bridges -->
+    <div class="print-section">
+      <h2 class="print-section-title">3. სიტყვების ხიდი: რას არ ვამბობთ vs. რა უნდა ვთქვათ</h2>
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th style="width: 45%; color: #C0392B;">❌ არასწორი (იწვევს აგრესიასა და შფოთვას)</th>
+            <th style="width: 55%; color: #0E8A7D;">✅ სწორი (ამშვიდებს და იცავს ღირსებას)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>„არ გახსოვს? წეღან ხომ გითხარი!“</td>
+            <td>„არ ინერვიულო, მე შეგახსენებ. ყველაფერი რიგზეა.“</td>
+          </tr>
+          <tr>
+            <td>„დედაშენი 20 წელია გარდაიცვალა!“</td>
+            <td>„დედა ძალიან გენატრება, ხომ? რა თბილი ადამიანი იყო... მომიყევი მასზე.“</td>
+          </tr>
+          <tr>
+            <td>„შენს სახლში ხარ, აქ ცხოვრობ!“</td>
+            <td>„აქ უსაფრთხოდ ხარ, მე შენთან ვარ. მოდი, ჯერ ჩაი დავლიოთ.“</td>
+          </tr>
+          <tr>
+            <td>„ტყუი, არავის არაფერი მოუპარავს!“</td>
+            <td>„ვხედავ, რომ ნერვიულობ. მოდი, ერთად მოვძებნოთ.“</td>
+          </tr>
+          <tr>
+            <td>„წამოდი, უნდა დაგბანო!“</td>
+            <td>„მოდი, ხელები თბილი წყლით დავიბანოთ, ძალიან სასიამოვნოა.“</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. PAINAD -->
+    <div class="print-section">
+      <h2 class="print-section-title">4. PAINAD: ტკივილის შეფასების ცხრილი (არავერბალური პაციენტებისთვის)</h2>
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th>ინდიკატორი</th>
+            <th>0 ქულა (ნორმა)</th>
+            <th>1 ქულა (მსუბუქი)</th>
+            <th>2 ქულა (ძლიერი)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. სუნთქვა</strong></td>
+            <td>ნორმალური, მშვიდი</td>
+            <td>ხმაურიანი, პერიოდული ქოშინი</td>
+            <td>მძიმე, შეშინებული, ჩეინ-სტოქსისებრი</td>
+          </tr>
+          <tr>
+            <td><strong>2. ხმოვანი გამოხატვა</strong></td>
+            <td>არ არის</td>
+            <td>დაბალი კვნესა, წუწუნი, ბუტბუტი</td>
+            <td>განმეორებითი ყვირილი, ტირილი</td>
+          </tr>
+          <tr>
+            <td><strong>3. სახის გამომეტყველება</strong></td>
+            <td>მშვიდი, მომღიმარი</td>
+            <td>შეჭმუხნილი წარბები, დაძაბული</td>
+            <td>ტკივილიანი გრიმასა, კბილების კრეჭა</td>
+          </tr>
+          <tr>
+            <td><strong>4. სხეულის ენა</strong></td>
+            <td>მოდუნებული, ბუნებრივი</td>
+            <td>დაძაბული, მუშტები, მოუსვენარი</td>
+            <td>მკვეთრი გაშეშება, მოკეცვა, თავდაცვა</td>
+          </tr>
+          <tr>
+            <td><strong>5. დამშვიდების უნარი</strong></td>
+            <td>არ სჭირდება დამშვიდება</td>
+            <td>ხმით ან შეხებით მშვიდდება</td>
+            <td>შეუძლებელია დამშვიდება</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 6px; font-size: 8.8pt; color: #333;">
+        <strong>ქულების შეფასება:</strong> 0 = ტკივილი არ არის; 1–3 = მსუბუქი დისკომფორტი (პოზა, ტანსაცმელი, წყალი); <strong>4–6 = ზომიერი ტკივილი (საჭიროა ექიმის ჩართვა და ანალიზები)</strong>; <strong>7–10 = მწვავე ტკივილი (სასწრაფო სამედიცინო დახმარება)</strong>.
+      </div>
+    </div>
+
+    <!-- 5. Home Safety Checklist -->
+    <div class="print-section">
+      <h2 class="print-section-title">5. უსაფრთხო სახლის 8-პუნქტიანი ჩექლისტი</h2>
+      <div class="print-checklist-grid">
+        <div class="print-check-item"><span class="print-box-sq"></span> 1. დერეფანი: მუქი და პატარა ხალიჩები მოშორებულია</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 2. დერეფანი: ღამის სენსორული დაბალი განათება დამონტაჟებულია</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 3. საძინებელი: დიდი სარკეები დაფარულია ქსოვილით/მოხსნილია</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 4. საძინებელი: შებინდებამდე ჩამოფარებულია მჭიდრო ფარდები</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 5. აბაზანა: უნიტაზის დასაჯდომი კონტრასტული მუქი ფერისაა</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 6. აბაზანა: საშხაპეში დაგებულია მოცურების საწინააღმდეგო საფარი</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 7. სასადილო: გამოყენებულია კონტრასტული თეფშები (არა თეთრი თეთრზე)</div>
+        <div class="print-check-item"><span class="print-box-sq"></span> 8. სამზარეულო: გაზქურის ბლოკირება დაყენებულია / წყალი 45°C-ზეა</div>
+      </div>
+    </div>
+
+    <!-- 6. Sundowning & Sedatives Warning -->
+    <div class="print-section">
+      <h2 class="print-section-title">6. საღამოს შფოთვა (Sundowning) და მედიკამენტური სიფრთხილე</h2>
+      <div class="print-box" style="margin-bottom: 8px;">
+        <strong>საღამოს შფოთვის მართვა:</strong> დილით შემოუშვით ბუნებრივი მზის სინათლე; 14:00 საათის შემდეგ შეზღუდეთ ყავა/ჩაი; შებინდებამდე ჩართეთ თბილი განათება; დაბანა და რთული პროცედურები გადაიტანეთ დილის საათებში.
+      </div>
+      <div class="print-box" style="border-left: 4px solid #C0392B;">
+        <strong>⛔ უმნიშვნელოვანესი გაფრთხილება საძილეებზე:</strong><br>
+        კატეგორიულად დაუშვებელია საძილეებისა და დამამშვიდებლების (ბენზოდიაზეპინების: დიაზეპამი, ფენაზეპამი) თვითნებური მიცემა! დემენციის დროს ისინი მკვეთრად ზრდის ღამით დაცემას, ბარძაყის მოტეხილობას და გონების მწვავე არევას.
+      </div>
+    </div>
+
+    <!-- 7. Visitor Memo -->
+    <div class="print-section" style="border-top: 2px dashed #999; padding-top: 12px; margin-top: 12px;">
+      <h2 class="print-section-title">7. ვიზიტორის მემორანდუმი (კარზე გასაკრავი ფურცელი სტუმრებისთვის)</h2>
+      <div class="print-box">
+        <strong>1. ნუ გამოცდით მეხსიერებას:</strong> არასოდეს ჰკითხოთ: „მიცანი? გახსოვს ვინ ვარ?“. მიესალმეთ ღიმილით: „გამარჯობა, მე ნინო ვარ“.<br>
+        <strong>2. მიუახლოვდით წინიდან:</strong> ნუ მიეპარებით ზურგიდან ან გვერდიდან — ეს იწვევს პანიკას.<br>
+        <strong>3. ნუ შეეკამათებით:</strong> თუ წარსულზე საუბრობს, დაეთანხმეთ და მოუსმინეთ. ნუ გაუსწორებთ ფაქტებს.<br>
+        <strong>4. შეინარჩუნეთ სიმშვიდე:</strong> ადამიანი მყისიერად გრძნობს თქვენს ემოციურ განწყობას.
+      </div>
+    </div>
+
+    <div style="margin-top: 16px; text-align: center; font-size: 8pt; color: #777;">
+      დემენცია ოჯახში © 2026. საგანმანათლებლო რესურსი მომვლელებისთვის. არ ცვლის მკურნალი ექიმის დანიშნულებას.
+    </div>
+  </section>
 
   <!-- App Toast Container -->
   <div class="app-toast" id="appToast" role="status" aria-live="polite"></div>
@@ -4064,9 +4368,6 @@ const VISITOR_MEMO = {
 class SoundEngine {
   constructor() {
     this.ctx = null;
-    this.ambientNode = null;
-    this.ambientGain = null;
-    this.isAmbientPlaying = false;
     this.chimeEnabled = true;
   }
 
@@ -4082,7 +4383,7 @@ class SoundEngine {
     }
   }
 
-  // ნაზი, მედიტაციური ტიბეტური ზარის მსგავსი ტონი სუნთქვის გადასვლებისთვის
+  // ნაზი, მედიტაციური ტონი 4-7-8 სუნთქვის ფაზების გადასვლებისთვის
   playChime(freq = 432, duration = 2.4) {
     if (!this.chimeEnabled) return;
     try {
@@ -4106,85 +4407,6 @@ class SoundEngine {
       osc.stop(this.ctx.currentTime + duration);
     } catch (e) {
       // Audio not permitted yet or not supported
-    }
-  }
-
-  // ბუნებრივი წვიმის / თეთრი ხმაურის სინთეზატორი ძილისა და შფოთვის დასამშვიდებლად
-  toggleAmbient(startCallback, stopCallback) {
-    this.init();
-    if (!this.ctx) return false;
-
-    if (this.isAmbientPlaying) {
-      this.stopAmbient();
-      if (stopCallback) stopCallback();
-      return false;
-    } else {
-      this.startAmbient();
-      if (startCallback) startCallback();
-      return true;
-    }
-  }
-
-  startAmbient() {
-    if (this.isAmbientPlaying || !this.ctx) return;
-    try {
-      const bufferSize = this.ctx.sampleRate * 2;
-      const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-
-      // Pink/Brown noise ალგორითმი წვიმის იმიტაციისთვის
-      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-      for (let i = 0; i < bufferSize; i++) {
-        const white = Math.random() * 2 - 1;
-        b0 = 0.99886 * b0 + white * 0.0555179;
-        b1 = 0.99332 * b1 + white * 0.0750759;
-        b2 = 0.96900 * b2 + white * 0.1538520;
-        b3 = 0.86650 * b3 + white * 0.3104856;
-        b4 = 0.55000 * b4 + white * 0.5329522;
-        b5 = -0.7616 * b5 - white * 0.0168980;
-        output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
-        b6 = white * 0.115926;
-      }
-
-      const whiteNoise = this.ctx.createBufferSource();
-      whiteNoise.buffer = noiseBuffer;
-      whiteNoise.loop = true;
-
-      // Lowpass ფილტრი რბილი წვიმის ჟღერადობისთვის
-      const filter = this.ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(800, this.ctx.currentTime);
-
-      this.ambientGain = this.ctx.createGain();
-      this.ambientGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-      this.ambientGain.gain.exponentialRampToValueAtTime(0.2, this.ctx.currentTime + 1.5);
-
-      whiteNoise.connect(filter);
-      filter.connect(this.ambientGain);
-      this.ambientGain.connect(this.ctx.destination);
-
-      whiteNoise.start();
-      this.ambientNode = whiteNoise;
-      this.isAmbientPlaying = true;
-    } catch (e) {
-      console.warn('Ambient noise error:', e);
-    }
-  }
-
-  stopAmbient() {
-    if (!this.isAmbientPlaying || !this.ambientGain) return;
-    try {
-      this.ambientGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
-      setTimeout(() => {
-        if (this.ambientNode) {
-          this.ambientNode.stop();
-          this.ambientNode.disconnect();
-          this.ambientNode = null;
-        }
-        this.isAmbientPlaying = false;
-      }, 850);
-    } catch (e) {
-      this.isAmbientPlaying = false;
     }
   }
 }
@@ -4403,40 +4625,80 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // 2. თემისა და შრიფტის მასშტაბირების სისტემა
+  // 2. თემისა და შრიფტის მასშტაბირების სისტემა (დღე / ღამე / სისტემური)
   const themeToggleBtn = document.getElementById("themeToggleBtn");
   const fontDecreaseBtn = document.getElementById("fontDecreaseBtn");
   const fontIncreaseBtn = document.getElementById("fontIncreaseBtn");
-  const ambientToggleBtn = document.getElementById("ambientToggleBtn");
 
   const THEME_KEY = "shentanvar_theme";
   const FONT_KEY = "shentanvar_fontsize";
 
-  const applyTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_KEY, theme);
-    if (themeToggleBtn) {
-      themeToggleBtn.setAttribute("aria-label", theme === "night" ? "დღის რეჟიმზე გადართვა" : "ღამის რეჟიმზე გადართვა");
-      const icon = themeToggleBtn.querySelector("svg");
+  const getSystemTheme = () => {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+  };
+
+  const updateThemeButtonUI = (themePref) => {
+    if (!themeToggleBtn) return;
+    const icon = themeToggleBtn.querySelector("svg");
+    if (themePref === "system") {
+      themeToggleBtn.setAttribute("aria-label", "თემა: სისტემური (დააჭირეთ დღის თემაზე გადასართავად)");
+      themeToggleBtn.setAttribute("title", "თემა: სისტემური (მოწყობილობის შესაბამისი)");
       if (icon) {
-        if (theme === "night") {
-          icon.innerHTML = `<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
-        } else {
-          icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>`;
-        }
+        icon.innerHTML = `<rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>`;
+      }
+    } else if (themePref === "day") {
+      themeToggleBtn.setAttribute("aria-label", "თემა: დღის (დააჭირეთ ღამის რეჟიმზე გადასართავად)");
+      themeToggleBtn.setAttribute("title", "თემა: დღის (ნათელი)");
+      if (icon) {
+        icon.innerHTML = `<circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>`;
+      }
+    } else {
+      themeToggleBtn.setAttribute("aria-label", "თემა: ღამის (დააჭირეთ სისტემურ რეჟიმზე გადასართავად)");
+      themeToggleBtn.setAttribute("title", "თემა: ღამის (მშვიდი)");
+      if (icon) {
+        icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>`;
       }
     }
   };
 
-  const savedTheme = localStorage.getItem(THEME_KEY) || "day";
+  const applyTheme = (themePref) => {
+    const effectiveTheme = themePref === "system" ? getSystemTheme() : themePref;
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+    document.documentElement.setAttribute("data-theme-preference", themePref);
+    localStorage.setItem(THEME_KEY, themePref);
+    updateThemeButtonUI(themePref);
+  };
+
+  const savedTheme = localStorage.getItem(THEME_KEY) || "system";
   applyTheme(savedTheme);
+
+  // სისტემური რეჟიმის ცვლილების დეტექცია
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+      const currentPref = localStorage.getItem(THEME_KEY) || "system";
+      if (currentPref === "system") {
+        applyTheme("system");
+      }
+    });
+  }
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme") || "day";
-      const next = current === "day" ? "night" : "day";
-      applyTheme(next);
-      window.showAppToast(next === "night" ? "ღამის მშვიდი რეჟიმი ჩაირთო" : "დღის ნათელი რეჟიმი ჩაირთო");
+      const currentPref = localStorage.getItem(THEME_KEY) || "system";
+      let nextPref = "day";
+      if (currentPref === "system") nextPref = "day";
+      else if (currentPref === "day") nextPref = "night";
+      else nextPref = "system";
+
+      applyTheme(nextPref);
+
+      if (nextPref === "system") {
+        window.showAppToast("სისტემური რეჟიმი (მოწყობილობის მიხედვით)");
+      } else if (nextPref === "day") {
+        window.showAppToast("დღის ნათელი რეჟიმი ჩაირთო");
+      } else {
+        window.showAppToast("ღამის მშვიდი რეჟიმი ჩაირთო");
+      }
     });
   }
 
@@ -4449,39 +4711,23 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   setFontScale(currentFontScale);
 
-  if (fontIncreaseBtn) {
-    fontIncreaseBtn.addEventListener("click", () => {
-      setFontScale(currentFontScale + 10);
-      window.showAppToast(`ტექსტის ზომა: ${currentFontScale}%`);
-    });
-  }
   if (fontDecreaseBtn) {
     fontDecreaseBtn.addEventListener("click", () => {
       setFontScale(currentFontScale - 10);
-      window.showAppToast(`ტექსტის ზომა: ${currentFontScale}%`);
+      window.showAppToast(`შრიფტი: ${currentFontScale}%`);
     });
   }
 
-  // 3. აუდიო ძრავი და წვიმის ხმა
+  if (fontIncreaseBtn) {
+    fontIncreaseBtn.addEventListener("click", () => {
+      setFontScale(currentFontScale + 10);
+      window.showAppToast(`შრიფტი: ${currentFontScale}%`);
+    });
+  }
+
+  // 3. აუდიო ძრავი და სუნთქვის ტრენაჟორი
   const soundEngine = new SoundEngine();
   const breathingTrainer = new BreathingTrainer(soundEngine);
-
-  if (ambientToggleBtn) {
-    ambientToggleBtn.addEventListener("click", () => {
-      const isPlaying = soundEngine.toggleAmbient(
-        () => {
-          ambientToggleBtn.classList.add("playing");
-          ambientToggleBtn.title = "წვიმის ხმის გამორთვა";
-          window.showAppToast("წვიმის დამამშვიდებელი ხმა ჩაირთო");
-        },
-        () => {
-          ambientToggleBtn.classList.remove("playing");
-          ambientToggleBtn.title = "წვიმის დამამშვიდებელი ხმის ჩართვა";
-          window.showAppToast("ხმა გაითიშა");
-        }
-      );
-    });
-  }
 
   // 4. მობილური მენიუ
   const navToggle = document.getElementById("navToggle");
@@ -4875,7 +5121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         desc = "პაციენტის ქცევა და ფიზიოლოგიური ნიშნები მშვიდია. განაგრძეთ რეგულარული მონიტორინგი.";
       } else if (total <= 3) {
         title = `მსუბუქი დისკომფორტი / შესაძლო ტკივილი (${total} ქულა)`;
-        desc = "შეამოწმეთ სხეულის პოზა, მოჭერილი ტანსაცმელი, წყურვილი, შარდის ბუშტი და შებერილობა. მიმართეთ დამამშვიდებელ არაფარმაკოლოგიურ მეთოდებს.";
+        desc = "შეამოწმეთ სხეულის პოზა, მოჭერილი ტანსაცმელი, წყურვილი, შარდის ბუშტი და შებერილობა. მიმართეთ დამამშვიდებელ უწამლო მეთოდებს.";
       } else if (total <= 6) {
         title = `ზომიერი ტკივილი (${total} ქულა) — საყურადღებოა!`;
         desc = "დიდი ალბათობით არსებობს ფიზიკური ტკივილის წყარო (შარდის ინფექცია, ყაბზობა, კბილი, სახსრები). რეკომენდებულია ექიმის კონსულტაცია ტკივილგამაყუჩებლის შესარჩევად.";

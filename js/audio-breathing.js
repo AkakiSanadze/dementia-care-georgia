@@ -4,9 +4,6 @@
 class SoundEngine {
   constructor() {
     this.ctx = null;
-    this.ambientNode = null;
-    this.ambientGain = null;
-    this.isAmbientPlaying = false;
     this.chimeEnabled = true;
   }
 
@@ -22,7 +19,7 @@ class SoundEngine {
     }
   }
 
-  // ნაზი, მედიტაციური ტიბეტური ზარის მსგავსი ტონი სუნთქვის გადასვლებისთვის
+  // ნაზი, მედიტაციური ტონი 4-7-8 სუნთქვის ფაზების გადასვლებისთვის
   playChime(freq = 432, duration = 2.4) {
     if (!this.chimeEnabled) return;
     try {
@@ -46,85 +43,6 @@ class SoundEngine {
       osc.stop(this.ctx.currentTime + duration);
     } catch (e) {
       // Audio not permitted yet or not supported
-    }
-  }
-
-  // ბუნებრივი წვიმის / თეთრი ხმაურის სინთეზატორი ძილისა და შფოთვის დასამშვიდებლად
-  toggleAmbient(startCallback, stopCallback) {
-    this.init();
-    if (!this.ctx) return false;
-
-    if (this.isAmbientPlaying) {
-      this.stopAmbient();
-      if (stopCallback) stopCallback();
-      return false;
-    } else {
-      this.startAmbient();
-      if (startCallback) startCallback();
-      return true;
-    }
-  }
-
-  startAmbient() {
-    if (this.isAmbientPlaying || !this.ctx) return;
-    try {
-      const bufferSize = this.ctx.sampleRate * 2;
-      const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-
-      // Pink/Brown noise ალგორითმი წვიმის იმიტაციისთვის
-      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-      for (let i = 0; i < bufferSize; i++) {
-        const white = Math.random() * 2 - 1;
-        b0 = 0.99886 * b0 + white * 0.0555179;
-        b1 = 0.99332 * b1 + white * 0.0750759;
-        b2 = 0.96900 * b2 + white * 0.1538520;
-        b3 = 0.86650 * b3 + white * 0.3104856;
-        b4 = 0.55000 * b4 + white * 0.5329522;
-        b5 = -0.7616 * b5 - white * 0.0168980;
-        output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
-        b6 = white * 0.115926;
-      }
-
-      const whiteNoise = this.ctx.createBufferSource();
-      whiteNoise.buffer = noiseBuffer;
-      whiteNoise.loop = true;
-
-      // Lowpass ფილტრი რბილი წვიმის ჟღერადობისთვის
-      const filter = this.ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(800, this.ctx.currentTime);
-
-      this.ambientGain = this.ctx.createGain();
-      this.ambientGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-      this.ambientGain.gain.exponentialRampToValueAtTime(0.2, this.ctx.currentTime + 1.5);
-
-      whiteNoise.connect(filter);
-      filter.connect(this.ambientGain);
-      this.ambientGain.connect(this.ctx.destination);
-
-      whiteNoise.start();
-      this.ambientNode = whiteNoise;
-      this.isAmbientPlaying = true;
-    } catch (e) {
-      console.warn('Ambient noise error:', e);
-    }
-  }
-
-  stopAmbient() {
-    if (!this.isAmbientPlaying || !this.ambientGain) return;
-    try {
-      this.ambientGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
-      setTimeout(() => {
-        if (this.ambientNode) {
-          this.ambientNode.stop();
-          this.ambientNode.disconnect();
-          this.ambientNode = null;
-        }
-        this.isAmbientPlaying = false;
-      }, 850);
-    } catch (e) {
-      this.isAmbientPlaying = false;
     }
   }
 }

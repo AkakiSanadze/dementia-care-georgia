@@ -43,40 +43,80 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // 2. თემისა და შრიფტის მასშტაბირების სისტემა
+  // 2. თემისა და შრიფტის მასშტაბირების სისტემა (დღე / ღამე / სისტემური)
   const themeToggleBtn = document.getElementById("themeToggleBtn");
   const fontDecreaseBtn = document.getElementById("fontDecreaseBtn");
   const fontIncreaseBtn = document.getElementById("fontIncreaseBtn");
-  const ambientToggleBtn = document.getElementById("ambientToggleBtn");
 
   const THEME_KEY = "shentanvar_theme";
   const FONT_KEY = "shentanvar_fontsize";
 
-  const applyTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_KEY, theme);
-    if (themeToggleBtn) {
-      themeToggleBtn.setAttribute("aria-label", theme === "night" ? "დღის რეჟიმზე გადართვა" : "ღამის რეჟიმზე გადართვა");
-      const icon = themeToggleBtn.querySelector("svg");
+  const getSystemTheme = () => {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+  };
+
+  const updateThemeButtonUI = (themePref) => {
+    if (!themeToggleBtn) return;
+    const icon = themeToggleBtn.querySelector("svg");
+    if (themePref === "system") {
+      themeToggleBtn.setAttribute("aria-label", "თემა: სისტემური (დააჭირეთ დღის თემაზე გადასართავად)");
+      themeToggleBtn.setAttribute("title", "თემა: სისტემური (მოწყობილობის შესაბამისი)");
       if (icon) {
-        if (theme === "night") {
-          icon.innerHTML = `<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
-        } else {
-          icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>`;
-        }
+        icon.innerHTML = `<rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>`;
+      }
+    } else if (themePref === "day") {
+      themeToggleBtn.setAttribute("aria-label", "თემა: დღის (დააჭირეთ ღამის რეჟიმზე გადასართავად)");
+      themeToggleBtn.setAttribute("title", "თემა: დღის (ნათელი)");
+      if (icon) {
+        icon.innerHTML = `<circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>`;
+      }
+    } else {
+      themeToggleBtn.setAttribute("aria-label", "თემა: ღამის (დააჭირეთ სისტემურ რეჟიმზე გადასართავად)");
+      themeToggleBtn.setAttribute("title", "თემა: ღამის (მშვიდი)");
+      if (icon) {
+        icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>`;
       }
     }
   };
 
-  const savedTheme = localStorage.getItem(THEME_KEY) || "day";
+  const applyTheme = (themePref) => {
+    const effectiveTheme = themePref === "system" ? getSystemTheme() : themePref;
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+    document.documentElement.setAttribute("data-theme-preference", themePref);
+    localStorage.setItem(THEME_KEY, themePref);
+    updateThemeButtonUI(themePref);
+  };
+
+  const savedTheme = localStorage.getItem(THEME_KEY) || "system";
   applyTheme(savedTheme);
+
+  // სისტემური რეჟიმის ცვლილების დეტექცია
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+      const currentPref = localStorage.getItem(THEME_KEY) || "system";
+      if (currentPref === "system") {
+        applyTheme("system");
+      }
+    });
+  }
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme") || "day";
-      const next = current === "day" ? "night" : "day";
-      applyTheme(next);
-      window.showAppToast(next === "night" ? "ღამის მშვიდი რეჟიმი ჩაირთო" : "დღის ნათელი რეჟიმი ჩაირთო");
+      const currentPref = localStorage.getItem(THEME_KEY) || "system";
+      let nextPref = "day";
+      if (currentPref === "system") nextPref = "day";
+      else if (currentPref === "day") nextPref = "night";
+      else nextPref = "system";
+
+      applyTheme(nextPref);
+
+      if (nextPref === "system") {
+        window.showAppToast("სისტემური რეჟიმი (მოწყობილობის მიხედვით)");
+      } else if (nextPref === "day") {
+        window.showAppToast("დღის ნათელი რეჟიმი ჩაირთო");
+      } else {
+        window.showAppToast("ღამის მშვიდი რეჟიმი ჩაირთო");
+      }
     });
   }
 
@@ -89,39 +129,23 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   setFontScale(currentFontScale);
 
-  if (fontIncreaseBtn) {
-    fontIncreaseBtn.addEventListener("click", () => {
-      setFontScale(currentFontScale + 10);
-      window.showAppToast(`ტექსტის ზომა: ${currentFontScale}%`);
-    });
-  }
   if (fontDecreaseBtn) {
     fontDecreaseBtn.addEventListener("click", () => {
       setFontScale(currentFontScale - 10);
-      window.showAppToast(`ტექსტის ზომა: ${currentFontScale}%`);
+      window.showAppToast(`შრიფტი: ${currentFontScale}%`);
     });
   }
 
-  // 3. აუდიო ძრავი და წვიმის ხმა
+  if (fontIncreaseBtn) {
+    fontIncreaseBtn.addEventListener("click", () => {
+      setFontScale(currentFontScale + 10);
+      window.showAppToast(`შრიფტი: ${currentFontScale}%`);
+    });
+  }
+
+  // 3. აუდიო ძრავი და სუნთქვის ტრენაჟორი
   const soundEngine = new SoundEngine();
   const breathingTrainer = new BreathingTrainer(soundEngine);
-
-  if (ambientToggleBtn) {
-    ambientToggleBtn.addEventListener("click", () => {
-      const isPlaying = soundEngine.toggleAmbient(
-        () => {
-          ambientToggleBtn.classList.add("playing");
-          ambientToggleBtn.title = "წვიმის ხმის გამორთვა";
-          window.showAppToast("წვიმის დამამშვიდებელი ხმა ჩაირთო");
-        },
-        () => {
-          ambientToggleBtn.classList.remove("playing");
-          ambientToggleBtn.title = "წვიმის დამამშვიდებელი ხმის ჩართვა";
-          window.showAppToast("ხმა გაითიშა");
-        }
-      );
-    });
-  }
 
   // 4. მობილური მენიუ
   const navToggle = document.getElementById("navToggle");
@@ -515,7 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
         desc = "პაციენტის ქცევა და ფიზიოლოგიური ნიშნები მშვიდია. განაგრძეთ რეგულარული მონიტორინგი.";
       } else if (total <= 3) {
         title = `მსუბუქი დისკომფორტი / შესაძლო ტკივილი (${total} ქულა)`;
-        desc = "შეამოწმეთ სხეულის პოზა, მოჭერილი ტანსაცმელი, წყურვილი, შარდის ბუშტი და შებერილობა. მიმართეთ დამამშვიდებელ არაფარმაკოლოგიურ მეთოდებს.";
+        desc = "შეამოწმეთ სხეულის პოზა, მოჭერილი ტანსაცმელი, წყურვილი, შარდის ბუშტი და შებერილობა. მიმართეთ დამამშვიდებელ უწამლო მეთოდებს.";
       } else if (total <= 6) {
         title = `ზომიერი ტკივილი (${total} ქულა) — საყურადღებოა!`;
         desc = "დიდი ალბათობით არსებობს ფიზიკური ტკივილის წყარო (შარდის ინფექცია, ყაბზობა, კბილი, სახსრები). რეკომენდებულია ექიმის კონსულტაცია ტკივილგამაყუჩებლის შესარჩევად.";
