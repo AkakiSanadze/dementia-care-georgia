@@ -3049,8 +3049,8 @@ blockquote {
 }
 
 .stage-action-box {
-  margin-top: auto;
-  padding: 16px;
+  margin-top: 18px;
+  padding: 18px;
   background: var(--paper-soft);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -3320,4 +3320,38 @@ blockquote {
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 6px;
+}
+
+/* Full-width callout below stages cards */
+.stage-summary-callout {
+  margin-top: 28px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1.5px solid rgba(239, 68, 68, 0.28);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stage-summary-callout .callout-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.stage-summary-callout .callout-content strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #DC2626;
+  margin-bottom: 6px;
+}
+
+.stage-summary-callout .callout-content p {
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.55;
+  margin: 0;
 }
