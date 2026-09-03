@@ -244,23 +244,26 @@ p {
 .brand-text-wrap {
   display: flex;
   flex-direction: column;
-  line-height: 1.18;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .brand-title {
   font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 1.15rem;
+  font-weight: 800;
+  font-size: 1.18rem;
   letter-spacing: -0.01em;
   color: var(--ink);
+  white-space: nowrap;
 }
 
 .brand-subtitle {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--ink-soft);
+  color: var(--teal);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 @media (max-width: 640px) {
@@ -268,11 +271,11 @@ p {
     font-size: 1.05rem;
   }
   .brand-subtitle {
-    font-size: 0.68rem;
+    font-size: 0.66rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .brand-subtitle {
     display: none;
   }
