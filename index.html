@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ka" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>დემენცია ოჯახში — პრაქტიკული ცნობარი</title>
+  <meta name="description" content="პრაქტიკული ცნობარი ოჯახებისთვის: დემენციის ქცევითი სიმპტომების მართვა, კომუნიკაცია, უსაფრთხო სახლის გარემო და მოვლა კლინიკური გაიდლაინების მიხედვით.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F2942'/%3E%3Cpath d='M20 18h24v28H20z' fill='none' stroke='%23F8FAFC' stroke-width='4'/%3E%3Cpath d='M20 26h24M20 34h16' stroke='%230E8A7D' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts (Georgian) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">გადასვლა ძირითად შიგთავსზე</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="დემენცია ოჯახში — მთავარი გვერდი">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </span>
+        <span class="brand-text">დემენცია ოჯახში</span>
+      </a>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <!-- Font Scaler -->
+        <div class="font-btn-group" title="ტექსტის ზომის რეგულირება">
+          <button class="font-btn" id="fontDecreaseBtn" type="button" aria-label="შრიფტის შემცირება">A-</button>
+          <button class="font-btn" id="fontIncreaseBtn" type="button" aria-label="შრიფტის გაზრდა">A+</button>
+        </div>
+
+        <!-- Ambient Rain Toggle -->
+        <button class="action-btn" id="ambientToggleBtn" type="button" aria-label="დამამშვიდებელი წვიმის ხმა" title="წვიმის დამამშვიდებელი ხმის ჩართვა">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>
+            <path d="M8 19v2M12 18v2M16 19v2"/>
+          </svg>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="action-btn" id="themeToggleBtn" type="button" aria-label="ღამის რეჟიმის გადართვა" title="თემის შეცვლა">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+
+        <!-- Sandwich Menu Toggle Button (Desktop & Mobile) -->
+        <button class="nav-toggle-btn" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="მენიუს გახსნა">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <span class="nav-toggle-text">მენიუ</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Off-canvas Backdrop -->
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+  <!-- Off-canvas Navigation Drawer (Desktop & Mobile) -->
+  <aside class="site-drawer" id="siteNav" role="dialog" aria-modal="true" aria-label="საიტის მენიუ">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <div class="drawer-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div>
+          <strong class="drawer-brand-name">დემენცია ოჯახში</strong>
+          <span class="drawer-brand-sub">პრაქტიკული ცნობარი</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" type="button" aria-label="მენიუს დახურვა">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="drawer-group">
+        <span class="drawer-group-title">ძირითადი ცნობარი</span>
+        <ul class="drawer-links">
+          <li><a href="#understand"><span class="link-bullet">1</span> კოგნიტური საფუძვლები</a></li>
+          <li><a href="#vision-approach"><span class="link-bullet">2</span> მხედველობის ველი და მიახლოება</a></li>
+          <li><a href="#scenarios"><span class="link-bullet">3</span> ქცევითი სცენარები და ალგორითმები</a></li>
+          <li><a href="#pain-check"><span class="link-bullet">4</span> ტკივილისა და ინფექციის დეკოდირება</a></li>
+          <li><a href="#word-bridges"><span class="link-bullet">5</span> კომუნიკაცია და Hand-under-Hand</a></li>
+        </ul>
+      </div>
+
+      <div class="drawer-group">
+        <span class="drawer-group-title">გარემო და პრაქტიკა</span>
+        <ul class="drawer-links">
+          <li><a href="#home-safety"><span class="link-bullet">6</span> უსაფრთხო გარემო სახლში</a></li>
+          <li><a href="#sundowning"><span class="link-bullet">7</span> Sundowning სინდრომი</a></li>
+          <li><a href="#breathing"><span class="link-bullet">8</span> 4-7-8 სუნთქვის ტექნიკა</a></li>
+          <li><a href="#red-flags"><span class="link-bullet">9</span> გადაუდებელი წითელი ალმები</a></li>
+          <li><a href="#visitor-memo"><span class="link-bullet">10</span> ვიზიტორთა მემორანდუმი</a></li>
+          <li><a href="#routine"><span class="link-bullet">11</span> მოვლის დღის რუტინა</a></li>
+          <li><a href="#faq"><span class="link-bullet">12</span> ხშირი შეკითხვები</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <p class="drawer-footer-text">
+        საინფორმაციო და პრაქტიკული რესურსი დემენციის მქონე პირთა ოჯახებისთვის.
+      </p>
+    </div>
+  </aside>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">საინფორმაციო და პრაქტიკული პორტალი</span>
+          <h1>დემენციის მართვა და მოვლა ოჯახურ გარემოში</h1>
+          <p class="lead">
+            დემენცია თავის ტვინის პროგრესირებადი ნეიროდეგენერაციული მდგომარეობაა და არა „ხასიათის გაფუჭება“ ან დაბერების ბუნებრივი ნორმა. ეს გზამკვლევი ეფუძნება საერთაშორისო კლინიკურ გაიდლაინებს (Teepa Snow, Naomi Feil, Alzheimer's Association) და ოჯახის წევრებს აწვდის ზუსტ, პრაქტიკულ რეკომენდაციებს ქცევითი სიმპტომების მართვის, კომუნიკაციისა და ყოველდღიური მოვლისთვის.
+          </p>
+          <div class="disclaimer-alert" style="background: var(--cream); padding: 14px 18px; border-radius: var(--radius-sm); border-left: 4px solid var(--teal); margin-bottom: 24px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; border: 1px solid var(--line); border-left-width: 4px; border-left-color: var(--teal);">
+            <strong>სამედიცინო შენიშვნა:</strong> პლატფორმაზე განთავსებული მასალები ატარებს საგანმანათლებლო და საინფორმაციო ხასიათს და არ ცვლის ექიმ-სპეციალისტის (ნევროლოგის, გერიატრის, ფსიქიატრის) კონსულტაციასა და ინდივიდუალურ მკურნალობის გეგმას.
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#scenarios">ქცევითი სცენარები და ალგორითმები</a>
+            <a class="btn btn-ghost" href="#understand">კოგნიტური საფუძვლები</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat-card">
+              <b>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                კამათის უშედეგობა
+              </b>
+              <p>ლოგიკური არგუმენტაცია და შეკამათება ზრდის აჟიტაციას; ეფექტურია ემოციის ვალიდაცია და ყურადღების გადატანა.</p>
+            </div>
+            <div class="hero-stat-card">
+              <b>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                ქცევის დეკოდირება
+              </b>
+              <p>აგრესია და წინააღმდეგობა გამოწვეულია შეუცნობელი დისკომფორტით (ტკივილი, ინფექცია, შიში, სენსორული გადატვირთვა).</p>
+            </div>
+            <div class="hero-stat-card">
+              <b>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                ემოციური მეხსიერება
+              </b>
+              <p>კოგნიტური ფუნქციების დაქვეითების მიუხედავად, არავერბალური სიგნალებისა და ემოციური ატმოსფეროს აღქმა ბოლომდე შენარჩუნებულია.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-overview-card">
+          <div class="hero-overview-header">
+            <span class="status-pill">კლინიკური გაიდლაინები 2026</span>
+            <span style="font-size: 0.82rem; color: var(--ink-muted); font-weight: 500;">4 ძირითადი მოდული</span>
+          </div>
+
+          <div class="hero-modules-grid">
+            <a href="#scenarios" class="hero-module-item">
+              <div class="module-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <strong>ქცევითი სცენარები</strong>
+              <span>8 ტიპური ეპიზოდი და ალგორითმი</span>
+            </a>
+
+            <a href="#vision-approach" class="hero-module-item">
+              <div class="module-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>
+              </div>
+              <strong>მხედველობის ველი</strong>
+              <span>გვირაბისებრი ხედვის სიმულატორი</span>
+            </a>
+
+            <a href="#home-safety" class="hero-module-item">
+              <div class="module-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <strong>უსაფრთხო სახლი</strong>
+              <span>4 საკვანძო ზონის ადაპტაცია</span>
+            </a>
+
+            <a href="#pain-check" class="hero-module-item">
+              <div class="module-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <strong>ტკივილის დეკოდირება</strong>
+              <span>ფარული ფიზიკური ტრიგერები</span>
+            </a>
+          </div>
+
+          <div class="today-note-card">
+            <span class="today-note-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </span>
+            <p class="today-note-text" id="todayInspirationalNote">კომუნიკაციის წესი: არასოდეს შეეკამათოთ ფაქტებზე. მოახდინეთ ემოციის ვალიდაცია და გადაიტანეთ ყურადღება.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Understand -->
+    <section id="understand">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">ნეიროფსიქოლოგიური საფუძვლები</span>
+          <h2>როგორ აღიქვამს სამყაროს დემენციის მქონე პაციენტი</h2>
+          <p class="lead">
+            დემენცია არ არის დაბერების ბუნებრივი პროცესი. ეს არის ტვინის ორგანული დაზიანება, რომელიც ცვლის აღქმას, ლოგიკასა და თვითრეგულაციას. ქცევა, რომელიც გარედან „უცნაური“ ან „აგრესიული“ ჩანს, ყოველთვის არის ბუნებრივი დაცვითი რეაქცია დამახინჯებულ რეალობაზე ან დაუკმაყოფილებელ ფიზიკურ საჭიროებაზე.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-num">1</div>
+            <h3>მოკლევადიანი მეხსიერების ხარვეზი</h3>
+            <p>ჰიპოკამპის დაზიანების გამო ახალი ინფორმაცია ვეღარ ფიქსირდება. პაციენტს არ ახსოვს, რომ 2 წუთის წინ უკვე მიიღო პასუხი. ეს არ არის ყურადღების დეფიციტი ან სიჯიუტე — ინფორმაცია უბრალოდ ვერ აღწევს მეხსიერების კონსოლიდაციის ეტაპს.</p>
+          </article>
+          <article class="card">
+            <div class="card-num">2</div>
+            <h3>რეტროგრადული დეზორიენტაცია</h3>
+            <p>დემენცია ხშირად რიბოს კანონის მიხედვით ვითარდება: ჯერ ქრება ბოლო წლების მოვლენები, ხოლო ძველი მოგონებები შენარჩუნებულია. პაციენტი შესაძლოა თავს აღიქვამდეს ათწლეულების წინანდელ რეალობაში (სამსახური, პატარა შვილები). ამ დროს ფაქტებით შეკამათება იწვევს მწვავე პანიკას.</p>
+          </article>
+          <article class="card">
+            <div class="card-num">3</div>
+            <h3>აფაზია და არავერბალური ენა</h3>
+            <p>მეტყველების ცენტრების დეგენერაცია ართულებს ტკივილის, შიმშილის, წყურვილის ან ფიზიოლოგიური დისკომფორტის ვერბალურად გადმოცემას. შედეგად, ნებისმიერი ფიზიკური დისკომფორტი გამოიხატება მოუსვენრობით, ყვირილით ან კვებაზე/ჰიგიენაზე უარით.</p>
+          </article>
+        </div>
+
+        <!-- 4 Major Dementia Syndromes (State-of-the-art Clinical Breakdown) -->
+        <div style="margin-top: 48px;">
+          <h3 style="font-size: 1.35rem; margin-bottom: 8px;">დემენციის 4 ძირითადი ფორმა და მათი თავისებურებები</h3>
+          <p style="color: var(--ink-soft); margin: 0; font-size: 0.95rem;">სხვადასხვა ნეიროდეგენერაციული დაავადება განსხვავებული სიმპტომებით იწყება და სპეციფიკურ მიდგომას მოითხოვს:</p>
+
+          <div class="syndromes-grid">
+            <div class="syndrome-card">
+              <span class="syndrome-badge syndrome-alz">60–70% შემთხვევები</span>
+              <h4 style="margin: 0; font-size: 1.1rem; color: var(--ink);">ალცჰეიმერის დაავადება</h4>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
+                იწყება მოკლევადიანი მეხსიერების დაკარგვითა და სიტყვების პოვნის გაძნელებით. მოგონებები წარსულიდან წლების მანძილზე შენარჩუნებულია. დროში გადაადგილება (Time Shifting) და ნაცნობი ნივთების დაკარგვა ტიპური გამოვლინებაა.
+              </p>
+            </div>
+
+            <div class="syndrome-card">
+              <span class="syndrome-badge syndrome-vasc">15–20% შემთხვევები</span>
+              <h4 style="margin: 0; font-size: 1.1rem; color: var(--ink);">სისხლძარღვოვანი დემენცია</h4>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
+                ვითარდება მცირე ინსულტებისა და სისხლის მიმოქცევის მოშლის ფონზე. ხასიათდება საფეხურებრივი (Stepwise) გაუარესებით, დაგეგმვისა და კონცენტრაციის მოშლით, სიარულის გაძნელებითა და ემოციური ლაბილობით (უეცარი ტირილი/სიცილი).
+              </p>
+            </div>
+
+            <div class="syndrome-card">
+              <span class="syndrome-badge syndrome-lewy">10–15% შემთხვევები</span>
+              <h4 style="margin: 0; font-size: 1.1rem; color: var(--ink);">ლევის სხეულაკების დემენცია</h4>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
+                მკაფიო მხედველობითი ჰალუცინაციები, ყურადღების მკვეთრი ცვალებადობა დღის განმავლობაში, პარკინსონიზმის მსგავსი მოტორული შებოჭილობა და ძილის დარღვევა. <strong>კრიტიკული:</strong> უკიდურესი მგრძნობელობა ტიპური ნეიროლეპტიკების მიმართ!
+              </p>
+            </div>
+
+            <div class="syndrome-card">
+              <span class="syndrome-badge syndrome-ftd">5–10% შემთხვევები</span>
+              <h4 style="margin: 0; font-size: 1.1rem; color: var(--ink);">ფრონტოტემპორალური (FTD)</h4>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
+                ხშირად იწყება შედარებით ახალგაზრდა ასაკში (50–65 წელი). მეხსიერება თავიდან ხელუხლებელია, მაგრამ იცვლება პიროვნება: სოციალური ფილტრების დაკარგვა (უხამსობა, ტაქტის დეფიციტი), აპათია, ემპათიის გაქრობა ან მეტყველების გაღარიბება.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Vision Field Simulator & Approach Rules -->
+    <section id="vision-approach" style="background: var(--cream); border-top: 1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">ვიზუალური აღქმა და Teepa Snow-ს მეთოდოლოგია</span>
+          <h2>„გვირაბისებრი მხედველობა“ და მიახლოების 3 ოქროს წესი</h2>
+          <p class="lead">
+            დემენციის პროგრესირებასთან ერთად თავის ტვინის კეფის წილის დაზიანების გამო პერიფერიული მხედველობა სრულად ქრება. ადამიანი სამყაროს ხედავს ისე, თითქოს მყვინთავის ნიღაბი ან ბინოკლი ეკეთოს.
+          </p>
+        </div>
+
+        <div class="vision-box">
+          <div class="vision-simulator">
+            <div class="vision-toggle-bar" role="group" aria-label="მხედველობის სიმულატორი">
+              <button class="vision-toggle-btn active" id="btnVisionNormal" type="button">
+                ნორმალური მხედველობა (180° პანორამა)
+              </button>
+              <button class="vision-toggle-btn" id="btnVisionTunnel" type="button">
+                დემენციის გვირაბისებრი ხედვა (60° მყვინთავის ნიღაბი)
+              </button>
+            </div>
+
+            <div class="vision-viewport" id="visionViewport" aria-live="polite">
+              <div class="vision-scene">
+                <div style="text-align: left; max-width: 140px;">
+                  <span style="display: block; font-size: 0.8rem; color: #94A3B8; font-weight: 600;">გვერდითი სივრცე</span>
+                  <strong style="font-size: 0.95rem; color: #38BDF8;">მომვლელი შემოდის</strong>
+                  <p style="font-size: 0.78rem; margin: 4px 0 0; color: #CBD5E1;">(გვერდიდან მიახლოება)</p>
+                </div>
+                <div style="text-align: center;">
+                  <span style="display: inline-block; width: 50px; height: 50px; border-radius: 50%; background: var(--teal); color: #FFF; line-height: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 0 20px rgba(14,138,125,0.6);">👁</span>
+                  <strong style="display: block; margin-top: 6px; font-size: 0.92rem;">მზერის ცენტრი</strong>
+                  <span style="font-size: 0.76rem; color: #94A3B8;">პირდაპირი ობიექტი</span>
+                </div>
+                <div style="text-align: right; max-width: 140px;">
+                  <span style="display: block; font-size: 0.8rem; color: #94A3B8; font-weight: 600;">გვერდითი სივრცე</span>
+                  <strong style="font-size: 0.95rem; color: #CBD5E1;">კარი / მოძრაობა</strong>
+                  <p style="font-size: 0.78rem; margin: 4px 0 0; color: #94A3B8;">(ჩრდილი / ხმაური)</p>
+                </div>
+              </div>
+              <div class="vision-overlay-vignette" id="visionOverlay"></div>
+            </div>
+
+            <p style="text-align: center; font-size: 0.9rem; color: var(--ink-muted); margin: 0;" id="visionSimulatorNote">
+              ნორმალურ რეჟიმში ადამიანი ამჩნევს გვერდით მოძრაობას. დააჭირეთ „გვირაბისებრ ხედვას“, რათა ნახოთ რა ემართება მხედველობას დემენციისას.
+            </p>
+          </div>
+
+          <!-- 3 Golden Rules of Approach -->
+          <div class="vision-rules-grid">
+            <div class="vision-rule-item">
+              <div class="vision-rule-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 1rem; color: var(--ink); margin-bottom: 4px;">1. მხოლოდ წინიდან (180°)</strong>
+                <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.45;">
+                  არასოდეს მიუახლოვდეთ გვერდიდან ან ზურგიდან. შედით მის მხედველობის ველში შორიდან (2 მეტრიდან), რათა მოულოდნელობამ შიში არ დაბადოს.
+                </p>
+              </div>
+            </div>
+
+            <div class="vision-rule-item">
+              <div class="vision-rule-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 1rem; color: var(--ink); margin-bottom: 4px;">2. ჩამოჯექით თვალის დონეზე</strong>
+                <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.45;">
+                  თავს ზემოდან დგომა პაციენტის ქვეცნობიერში აღიქმება როგორც დომინანტური საფრთხე. ჩამოჯექით მის სიმაღლეზე ან ოდნავ ქვემოთ.
+                </p>
+              </div>
+            </div>
+
+            <div class="vision-rule-item">
+              <div class="vision-rule-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 1rem; color: var(--ink); margin-bottom: 4px;">3. ხმა შეხებამდე</strong>
+                <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.45;">
+                  ჯერ დაუძახეთ სახელით, გაუღიმეთ, დაელოდეთ მზერის ფოკუსირებას და მხოლოდ ამის შემდეგ შეეხეთ ხელზე. უეცარი შეხება თავდაცვით აგრესიას რთავს.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Situations / Scenarios („რა ხდება ახლა“) -->
+    <section id="scenarios" style="background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">კლინიკური სიტუაციები და ალგორითმები</span>
+          <h2>ქცევითი გამოვლინებები და მოქმედების გეგმა</h2>
+          <p class="lead">
+            აირჩიეთ კონკრეტული სიტუაცია ან გამოიყენეთ ძიება. თითოეულ შემთხვევაზე მოცემულია: გამომწვევი ნეიროფსიქოლოგიური მიზეზი, ეტაპობრივი ალგორითმი, რეკომენდებული ფრაზები და დაუშვებელი შეცდომები.
+          </p>
+        </div>
+
+        <!-- De-escalation Protocol Banner (Nordic Clinical Modern) -->
+        <div class="deescalation-box">
+          <div class="deescalation-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            მწვავე აჟიტაციის პირველადი ალგორითმი
+          </div>
+          <h3>ქცევითი კრიზისის დეესკალაცია (3 ნაბიჯი)</h3>
+          <div class="deescalation-grid">
+            <div class="deescalation-step">
+              <span class="step-num">1</span>
+              <div>
+                <strong>დისტანცირება და უსაფრთხოება</strong>
+                <p>დაუყოვნებლივ შეწყვიტეთ გამაღიზიანებელი მოქმედება (ჩაცმა, კვება, დაბანა). დაიხიეთ უკან 1.5–2 მეტრით, რათა არ აღიქმებოდეთ ფიზიკურ საფრთხედ.</p>
+              </div>
+            </div>
+            <div class="deescalation-step">
+              <span class="step-num">2</span>
+              <div>
+                <strong>თვალის დონე და დაბალი ტემბრი</strong>
+                <p>არ დაადგეთ თავზე ზემოდან. ჩამოჯექით თვალის დონეზე. ისაუბრეთ მშვიდი, დაბალი ტემბრით და ორჯერ უფრო ნელა.</p>
+              </div>
+            </div>
+            <div class="deescalation-step">
+              <span class="step-num">3</span>
+              <div>
+                <strong>ემოციის ვალიდაცია</strong>
+                <p>„შენ უსაფრთხოდ ხარ, მე აქ ვარ დასახმარებლად.“ მოერიდეთ ლოგიკურ კამათს და ფაქტების მტკიცებას.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-box-wrap">
+          <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text" class="search-input" id="scenarioSearch" placeholder="მოძებნეთ სიტუაცია (მაგ. „დაბანა“, „მპარავენ“, „სახლში მინდა“, „ყვირილი“)..." aria-label="სიტუაციების ძიება">
+        </div>
+
+        <!-- Category Chips -->
+        <div class="chips" id="scenarioChips" role="group" aria-label="კატეგორიები"></div>
+
+        <!-- Scenarios Split View -->
+        <div class="scenarios-layout">
+          <!-- Button List -->
+          <div class="scenario-buttons-list" id="scenarioButtonsList" role="tablist"></div>
+
+          <!-- Active Detail Container -->
+          <div class="scenario-detail-card" id="activeScenarioDetail">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Pain & Physical Discomfort Decoder (PAINAD) -->
+    <section id="pain-check" style="background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">კლინიკური შეფასება (PAINAD გაიდლაინი)</span>
+          <h2>ტკივილისა და ფიზიკური დისკომფორტის დეკოდირება</h2>
+          <p class="lead">
+            დემენციის შუა და გვიან სტადიაზე ადამიანი კარგავს უნარს თქვას: „მუცელი მტკივა“ ან „კბილი მაწუხებს“. <strong>უეცარი აგრესიისა და წინააღმდეგობის 90%-ის უკან იმალება შეუცნობელი ფიზიკური ტკივილი ან ინფექცია.</strong>
+          </p>
+        </div>
+
+        <div class="pain-decoder-box">
+          <h3 style="margin-top: 0; font-size: 1.25rem;">4 ფარული ფიზიკური ტრიგერი, რომელიც პირველ რიგში უნდა გამოირიცხოს:</h3>
+
+          <div class="pain-grid">
+            <div class="pain-card">
+              <div class="pain-card-head">
+                <div class="pain-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <h4>1. შარდსასქესო გზების ინფექცია (UTI)</h4>
+                  <span style="font-size: 0.8rem; color: var(--danger); font-weight: 600;">ყველაზე ხშირი მიზეზი</span>
+                </div>
+              </div>
+              <p>იწვევს უეცარ დელირიუმს (რამდენიმე საათში მკვეთრ აჟიტაციას, ჰალუცინაციებსა და წვას). პაციენტი მოუსვენრადაა, ცდილობს ტანსაცმლის გახდას.</p>
+              <div class="pain-action-tip">
+                <strong>მოქმედება:</strong> შარდის საერთო ანალიზი და ექიმის დაუყოვნებლივი კონსულტაცია.
+              </div>
+            </div>
+
+            <div class="pain-card">
+              <div class="pain-card-head">
+                <div class="pain-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+                </div>
+                <div>
+                  <h4>2. ყაბზობა და მუცლის შებერილობა</h4>
+                  <span style="font-size: 0.8rem; color: var(--amber-deep); font-weight: 600;">ქრონიკული სპაზმი</span>
+                </div>
+              </div>
+              <p>თუ ნაწლავთა მოქმედება არ ყოფილა 2-3 დღე, ჩნდება ძლიერი მუცლის ტკივილი. ადამიანი იკვრავს მუშტებს, იხრება წინ, წამოხტება სკამიდან და კვნესის.</p>
+              <div class="pain-action-tip">
+                <strong>მოქმედება:</strong> სითხის რაოდენობის გაზრდა, ქლიავის ჩირი, ექიმთან შეთანხმებული რბილი საფაღარათო.
+              </div>
+            </div>
+
+            <div class="pain-card">
+              <div class="pain-card-head">
+                <div class="pain-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+                <div>
+                  <h4>3. პირის ღრუ, კბილი და ყლაპვა</h4>
+                  <span style="font-size: 0.8rem; color: var(--terracotta); font-weight: 600;">საკვებზე უარის მიზეზი</span>
+                </div>
+              </div>
+              <p>დაზიანებული კბილი, მორგებული პროთეზის ღრძილში ჩაჭრა ან წყლული. პაციენტი კოვზის დანახვაზე პირს კუმავს ან ხელს კრავს საჭმელს.</p>
+              <div class="pain-action-tip">
+                <strong>მოქმედება:</strong> პირის ღრუს ნაზი დათვალიერება, თბილი რბილი პიურე, პროთეზის მორგების შემოწმება.
+              </div>
+            </div>
+
+            <div class="pain-card">
+              <div class="pain-card-head">
+                <div class="pain-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <h4>4. კანი, გაყინული კიდურები, ტანსაცმელი</h4>
+                  <span style="font-size: 0.8rem; color: var(--teal); font-weight: 600;">სენსორული დისკომფორტი</span>
+                </div>
+              </div>
+              <p>მჭიდრო რეზინი წინდაზე, ტანსაცმლის უხეში იარლიყი, გაყინული ტერფები ან საწყისი ნაწოლი. ადამიანი იგლეჯს ტანსაცმელს და ყვირის.</p>
+              <div class="pain-action-tip">
+                <strong>მოქმედება:</strong> იარლიყების მოჭრა, ბამბის რბილი უნაკერო ტანსაცმელი, თბილი წინდები.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Word Bridges („სიტყვების ხიდი“) -->
+    <section id="word-bridges">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">კომუნიკაციის მოდიფიკაცია</span>
+          <h2>სიტყვების ხიდი: არასწორი vs. რეკომენდებული ფრაზები</h2>
+          <p class="lead">
+            დემენციის დროს არასწორად შერჩეული ფრაზა ხშირად იწვევს აჟიტაციასა და წინააღმდეგობას. ქვემოთ წარმოდგენილია კლინიკურად ეფექტური საკომუნიკაციო ალტერნატივები, რომელთა კოპირებაც შეგიძლიათ ერთი დაწკაპუნებით.
+          </p>
+        </div>
+
+        <div class="bridge-grid" id="wordBridgesGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- Hand-under-Hand Touch Technique -->
+        <div class="hand-compare-box">
+          <span class="eyebrow" style="color: var(--teal);">Teepa Snow-ს შეხების ტექნიკა</span>
+          <h3 style="margin: 6px 0 12px; font-size: 1.3rem;">„ხელი ხელის ქვეშ“ (Hand-under-Hand) ჭამისა და მოვლის დროს</h3>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5;">
+            როცა პაციენტს უჭირს კოვზის ჭერა, ჭიქის პირთან მიტანა ან კბილის გახეხვა, ჩვენი ჩვეულებრივი ინსტინქტია — მოვკიდოთ ხელი ზემოდან და ვმართოთ. აი რატომ არის ეს შეცდომა:
+          </p>
+
+          <div class="hand-compare-grid">
+            <div class="hand-card bad">
+              <strong style="color: var(--danger); font-size: 0.88rem; text-transform: uppercase;">❌ არასწორი: ზემოდან ჩაჭიდება (Grab from Above)</strong>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
+                როცა პაციენტის ხელს ზემოდან ვეჭიდებით, მისი ტვინი ამას აღიქვამს როგორც ფიზიკურ შეზღუდვასა და კონტროლს. ავტომატურად ირთვება წინააღმდეგობის რეფლექსი — ხელი იჭიმება, მუშტი იკვრება და ადამიანი იწყებს ბრძოლას.
+              </p>
+            </div>
+
+            <div class="hand-card good">
+              <strong style="color: var(--teal); font-size: 0.88rem; text-transform: uppercase;">✅ სწორი: Hand-under-Hand (მომვლელის ხელი ქვემოდან)</strong>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
+                თქვენი მტევანი ამაგრებს პაციენტის ხელს <strong>ქვემოდან</strong>, ხოლო ცერა თითები ერთმანეთს ეყრდნობა. საგანს (კოვზს, სავარცხელს) ეხება თვითონ პაციენტი. თქვენ მხოლოდ მიმართულებას აძლევთ, ხოლო პაციენტის ტვინს რჩება შეგრძნება, რომ მოქმედებას თვითონ ასრულებს.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Safe Home Adaptation (4 Zones) -->
+    <section class="home-safety-section" id="home-safety">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">საცხოვრებელი გარემოს ადაპტაცია</span>
+          <h2>უსაფრთხო სახლი: 4 კრიტიკული ზონა</h2>
+          <p class="lead">
+            დემენციის მქონე ადამიანისთვის სახლი სავსეა უხილავი საფრთხეებითა და ოპტიკური ილუზიებით. გარემოს მარტივი მოდიფიკაცია 70%-ით ამცირებს ტრავმებს, შიშსა და ღამის აჟიტაციას.
+          </p>
+        </div>
+
+        <div class="safety-grid">
+          <!-- Zone 1: Hallway / Dark Rugs -->
+          <article class="safety-card">
+            <h3 class="safety-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+              1. დერეფანი და იატაკი
+            </h3>
+            <div class="safety-compare-row">
+              <div class="safety-item-bad">
+                <strong>❌ საფრთხე: შავი/მუქი ხალიჩა</strong>
+                სიღრმის აღქმის დაკარგვის გამო მუქი ხალიჩა პაციენტს ეჩვენება როგორც ღრმა უფსკრული ან ორმო. ის უეცრად შეშდება, ეშინია გადაბიჯება, კარგავს წონასწორობას და ეცემა.
+              </div>
+              <div class="safety-item-good">
+                <strong>✅ სწორი გადაწყვეტა: ერთგვაროვანი ღია იატაკი</strong>
+                მოაშორეთ პატარა მუქი ფიანდაზები. გამოიყენეთ ერთგვაროვანი ღია იატაკი და დაამონტაჟეთ ღამის მოძრაობის სენსორიანი დაბალი განათება იატაკის დონეზე.
+              </div>
+            </div>
+          </article>
+
+          <!-- Zone 2: Bedroom / Mirrors -->
+          <article class="safety-card">
+            <h3 class="safety-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              2. საძინებელი და სარკეები
+            </h3>
+            <div class="safety-compare-row">
+              <div class="safety-item-bad">
+                <strong>❌ საფრთხე: ღია დიდი სარკე</strong>
+                პაციენტი ვერ ცნობს საკუთარ მოხუცებულ ანარეკლს (გონებაში თავს 30 წლისად აღიქვამს). მას ჰგონია, რომ ოთახში უცხო ადამიანია, რომელიც უთვალთვალებს და პანიკაში ვარდება.
+              </div>
+              <div class="safety-item-good">
+                <strong>✅ სწორი გადაწყვეტა: სარკის დაფარვა ან მოხსნა</strong>
+                დააფარეთ სარკეს დეკორატიული ქსოვილი ან სულ მოხსენით. საღამოს ჩამოაფარეთ ფანჯრის ფარდები, რათა მინამ სარკისებრი ანარეკლი არ შექმნას.
+              </div>
+            </div>
+          </article>
+
+          <!-- Zone 3: Bathroom / Contrasts -->
+          <article class="safety-card">
+            <h3 class="safety-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h6M12 6v12M5 18h14"/></svg>
+              3. აბაზანა და ჰიგიენა
+            </h3>
+            <div class="safety-compare-row">
+              <div class="safety-item-bad">
+                <strong>❌ საფრთხე: თეთრი უნიტაზი თეთრ კაფელზე</strong>
+                სივრცითი აგნოზიის გამო თეთრი უნიტაზი თეთრ ფონზე შეუმჩნეველია. პაციენტს ეშინია დაჯდომა, რადგან ვერ ხედავს საყრდენს, რაც იწვევს ინკონტინენციას.
+              </div>
+              <div class="safety-item-good">
+                <strong>✅ სწორი გადაწყვეტა: კონტრასტული დასაჯდომი და სახელურები</strong>
+                დააყენეთ მუქი (ლურჯი/შავი) უნიტაზის დასაჯდომი, ჩამოკიდეთ მკვეთრი ფერის პირსახოცი, საშხაპეში დააგეთ მოცურების საწინააღმდეგო რეზინის ხალიჩა.
+              </div>
+            </div>
+          </article>
+
+          <!-- Zone 4: Dining & Kitchen -->
+          <article class="safety-card">
+            <h3 class="safety-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+              4. სასადილო და სამზარეულო
+            </h3>
+            <div class="safety-compare-row">
+              <div class="safety-item-bad">
+                <strong>❌ საფრთხე: თეთრი თეფში თეთრ სუფრაზე</strong>
+                თეთრი ფერის საკვები (ბრინჯი, კარტოფილი, ყველი) თეთრ თეფშზე მისთვის უხილავია. ადამიანი ფიქრობს, რომ თეფში ცარიელია და უარს ამბობს ჭამაზე.
+              </div>
+              <div class="safety-item-good">
+                <strong>✅ სწორი გადაწყვეტა: კონტრასტული თეფში და უსაფრთხოება</strong>
+                გამოიყენეთ მკვეთრი ლურჯი ან წითელი თეფში. დააყენეთ გაზქურის ჩამრთველების დამცავი ბლოკირება და წყლის გამაცხელებლის ლიმიტი 45°C-ზე.
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Sundowning & Validation Therapy -->
+    <section id="sundowning">
+      <div class="wrap">
+        <div class="sundown-banner">
+          <div>
+            <span class="eyebrow">ცირკადული რიტმის დარღვევა</span>
+            <h3>Sundowning — საღამოს აჟიტაციის სინდრომი</h3>
+            <p>
+              მზის ჩასვლასთან ერთად გადაღლილი ცერებრალური ქერქი ვეღარ ამუშავებს სენსორულ იმპულსებს. შებინდებისას შეცვლილი განათება და ოთახში გაჩენილი ჩრდილები აძლიერებს დეზორიენტაციას, რასაც პაციენტი აღიქვამს როგორც საფრთხეს.
+            </p>
+          </div>
+
+          <div class="sundown-tips-grid">
+            <div class="sundown-tip">
+              <strong>1. ინსოლაცია და ადრეული განათება</strong>
+              <span>დაბინდებამდე ადრევე ჩართეთ ოთახში კაშკაშა, თბილი განათება, რათა ოთახში არ წარმოიქმნას კონტრასტული ჩრდილები.</span>
+            </div>
+            <div class="sundown-tip">
+              <strong>2. კოფეინისა და შაქრის შეზღუდვა</strong>
+              <span>ნაშუადღევს მოერიდეთ ჩაის, ყავასა და მარტივ ნახშირწყლებს, რომლებიც ცენტრალურ ნერვულ სისტემას აღაგზნებს.</span>
+            </div>
+            <div class="sundown-tip">
+              <strong>3. აკუსტიკური სტაბილიზაცია</strong>
+              <span>ჩართეთ დაბალ ხმაზე მშვიდი, პაციენტისთვის ახალგაზრდობიდან ნაცნობი მუსიკა ან თეთრი ხმაური.</span>
+            </div>
+            <div class="sundown-tip">
+              <strong>4. რთული პროცედურების გადატანა</strong>
+              <span>ჰიგიენური პროცედურები (დაბანა, გამოცვლა) დაგეგმეთ დილის ან შუადღის საათებში და არა საღამოს.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validation Therapy Card -->
+        <div class="panel" style="margin-top: 36px;">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="eyebrow">ვალიდაციის თერაპია (Naomi Feil)</span>
+              <h3>ემოციის ვალიდაცია რეალობის ძალდატანებითი შესწორების ნაცვლად</h3>
+              <p>
+                თუ პაციენტი ეძებს წლების წინ გარდაცვლილ მშობელს ან ითხოვს ძველ სამსახურში წასვლას, ფაქტებით შეკამათება იწვევს მწვავე ემოციურ ტრავმასა და პანიკას.
+              </p>
+              <p>
+                ვალიდაცია გულისხმობს <strong>ემოციური მდგომარეობის</strong> აღიარებას: პაციენტი ეძებს არა ფიზიკურ პირს, არამედ უსაფრთხოების, სითბოსა და დაცულობის შეგრძნებას.
+              </p>
+            </div>
+            <div class="card" style="background: var(--olive-surface); border-color: var(--olive-mid);">
+              <h4 style="color: var(--olive);">კომუნიკაციის ალგორითმი:</h4>
+              <p>❌ <strong>არასწორი რეაქცია:</strong> „დედა დიდი ხნის წინ გარდაიცვალა, როგორ არ გახსოვს!“</p>
+              <p>✅ <strong>რეკომენდებული პასუხი:</strong> „დედა ძალიან გენატრება, ხომ? რა თბილი ადამიანი იყო... მომიყევი, რას აკეთებდით ხოლმე ერთად?“</p>
+              <p style="font-size: 0.92rem; color: var(--ink-soft); margin-top: 8px;">
+                როდესაც პაციენტი იწყებს მოყოლას, მისი ვეგეტატიური ნერვული სისტემა მშვიდდება, რადგან გრძნობს მოსმენასა და ემოციურ თანხვედრას.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Breathing Tool for Caregivers (4-7-8) -->
+    <section class="breathing-section" id="breathing">
+      <div class="wrap">
+        <div class="section-head" style="text-align: center; margin-inline: auto;">
+          <span class="eyebrow">მომვლელის რესურსი</span>
+          <h2>4-7-8 სუნთქვითი რელაქსაცია: დეესკალაცია</h2>
+          <p class="lead" style="margin-inline: auto;">
+            მწვავე ემოციური დაძაბულობისას 4-7-8 მეთოდი ასტიმულირებს ცთომილ ნერვს (Vagus nerve), ააქტიურებს პარასიმპათიკურ სისტემას და აქვეითებს არტერიულ წნევასა და სტრესის ჰორმონებს.
+          </p>
+        </div>
+
+        <div class="breathing-card">
+          <div class="breath-circle-wrap">
+            <div class="breath-circle" id="breathCircle" role="button" tabindex="0" aria-label="სუნთქვითი ვარჯიშის დაწყება ან შეჩერება" title="დააჭირეთ დასაწყებად">
+              <span class="breath-action-text" id="breathActionText">დაიწყე</span>
+              <span class="breath-counter" id="breathCounter"></span>
+              <span class="breath-hint-label">დააჭირეთ</span>
+            </div>
+          </div>
+
+          <div class="breath-btn-wrap">
+            <button class="btn btn-olive breath-main-btn" id="breathToggleBtn" type="button" aria-label="4-7-8 სუნთქვითი ციკლის დაწყება ან შეჩერება">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>4-7-8 ციკლის დაწყება</span>
+            </button>
+          </div>
+
+          <p class="breath-instruction" id="breathInstruction" title="დააჭირეთ დასაწყებად">
+            დააჭირეთ ღილაკს ან წრეს 3-წუთიანი სუნთქვითი ციკლის დასაწყებად
+          </p>
+
+          <span class="breath-cycle-badge" id="breathCycleBadge">ციკლი: 0 / 4</span>
+
+          <p class="breath-affirmation" id="breathAffirmation">
+            4-7-8 სუნთქვის მეთოდი ააქტიურებს პარასიმპათიკურ ნერვულ სისტემას და ამცირებს კორტიზოლის დონეს.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Red Flags (სასწრაფო სამედიცინო ნიშნები) -->
+    <section id="red-flags">
+      <div class="wrap">
+        <div class="red-flags-box">
+          <div class="red-flags-alert-banner">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <div>
+              <h3>„წითელი ალმები“: როდის არის საჭირო გადაუდებელი სამედიცინო დახმარება</h3>
+              <p>დემენცია ნელა, თვეებისა და წლების მანძილზე პროგრესირებს. <strong>თუ მდგომარეობა საათებში ან რამდენიმე დღეში მკვეთრად გაუარესდა, ეს დემენციის ჩვეულებრივი მიმდინარეობა არ არის!</strong> ასეთ დროს აუცილებელია დაუყოვნებლივი სამედიცინო გამოკვლევა.</p>
+            </div>
+          </div>
+
+          <div class="red-flag-items-grid">
+            <div class="red-flag-item">
+              <div class="red-flag-icon">1</div>
+              <div>
+                <strong>დელირიუმი და ფარული ინფექცია (მაგ. UTI)</strong>
+                <p>შარდგამომყოფი გზების ინფექცია ხანდაზმულებში ხშირად ტემპერატურის გარეშე მიმდინარეობს და იწვევს <strong>უეცარ აგრესიას, მწვავე ჰალუცინაციებსა და ძლიერ დაბნეულობას</strong>. შარდის ანალიზი პირველი კლინიკური ნაბიჯია.</p>
+              </div>
+            </div>
+
+            <div class="red-flag-item">
+              <div class="red-flag-icon">2</div>
+              <div>
+                <strong>მწვავე ცერებროვასკულური ეპიზოდი ან ტრავმა (FAST პროტოკოლი)</strong>
+                <p>სახის ასიმეტრია (Face), კიდურების ცალმხრივი სისუსტე (Arm), მეტყველების უეცარი გაძნელება (Speech). <strong>T (Time — დრო გადამწყვეტია):</strong> გამოიძახეთ სასწრაფო დახმარება (112) დაუყოვნებლივ, პირველივე საათებში თერაპიული ფანჯრის დასაცავად. დემენციისას ადამიანი ვერ გადმოგცემთ თავის ტრავმას — აუცილებელია სხეულის რეგულარული დათვალიერებაც.</p>
+              </div>
+            </div>
+
+            <div class="red-flag-item">
+              <div class="red-flag-icon">3</div>
+              <div>
+                <strong>გაუწყლოება (დეჰიდრატაცია)</strong>
+                <p>ჩაცვენილი თვალები, მუქი შარდი, მშრალი ლორწოვანი გარსები, გამოხატული სისუსტე და სოპორი. პაციენტებს ხშირად უქვეითდებათ წყურვილის შეგრძნება ან ავიწყდებათ სითხის მიღება.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Visitor & Relatives Memo -->
+    <section id="visitor-memo">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">ვიზიტორთა ეტიკეტი და კომუნიკაცია</span>
+          <h2>რეკომენდაციები სტუმრებისა და ახლობლებისთვის</h2>
+          <p class="lead">
+            დემენციის მქონე ადამიანთან ვიზიტისას სწორ კომუნიკაციას გადამწყვეტი მნიშვნელობა აქვს, რათა თავიდან ავიცილოთ პაციენტის შფოთვა და მომვლელის გადატვირთვა. ეს მემორანდუმი შეგიძლიათ გაუზიაროთ სტუმრებს ვიზიტამდე.
+          </p>
+        </div>
+
+        <div class="visitor-memo-card">
+          <div class="btn-row" style="justify-content: flex-end; margin-bottom: 20px;">
+            <button class="btn btn-ghost" id="copyMemoBtn" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              ტექსტის კოპირება
+            </button>
+            <button class="btn btn-olive" id="printMemoBtn" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              ამობეჭდვა (PDF / Print)
+            </button>
+          </div>
+
+          <ul class="visitor-rules-list" id="visitorRulesList">
+            <!-- Rendered by app.js -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Routine & Circadian Balance -->
+    <section id="routine" style="background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">ყოველდღიური მენეჯმენტი</span>
+          <h2>დღის რუტინა: ცირკადული რიტმი და სტაბილურობა</h2>
+          <p class="lead">
+            სტაბილური, პროგნოზირებადი დღის განრიგი ამცირებს კოგნიტურ გადატვირთვას და პრევენციას უწევს საღამოს შფოთვას (Sundowning).
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel" style="background: var(--white); border-color: var(--line);">
+            <h3 style="margin-top: 0; color: var(--teal); font-size: 1.15rem;">დღის 4 საკვანძო ფაზა</h3>
+            
+            <div style="display: grid; gap: 14px; margin-top: 16px;">
+              <div style="padding: 12px 14px; background: var(--cream); border-radius: var(--radius-sm); border-left: 3px solid var(--teal);">
+                <strong style="display: block; font-size: 0.95rem; color: var(--ink);">🌅 დილა (08:00 – 11:00) — აქტივაცია და სინათლე</strong>
+                <p style="margin: 4px 0 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45;">
+                  გახსენით ფარდები, მიეცით მზის ბუნებრივი სინათლე (აჩერებს მელატონინის გამოყოფას). მშვიდი საუზმე, ნაზი ჰიგიენა, მედიკამენტები.
+                </p>
+              </div>
+
+              <div style="padding: 12px 14px; background: var(--cream); border-radius: var(--radius-sm); border-left: 3px solid #0284C7;">
+                <strong style="display: block; font-size: 0.95rem; color: var(--ink);">☀️ შუადღე (12:00 – 15:00) — ჰიდრატაცია და სეირნობა</strong>
+                <p style="margin: 4px 0 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45;">
+                  ძირითადი სადილი, სითხის რეგულარული მიწოდება (მინ. 4-5 ჭიქა წყალი დღის ამ მონაკვეთამდე). ხანმოკლე გასეირნება ან მსუბუქი მოძრაობა.
+                </p>
+              </div>
+
+              <div style="padding: 12px 14px; background: var(--cream); border-radius: var(--radius-sm); border-left: 3px solid var(--amber-deep);">
+                <strong style="display: block; font-size: 0.95rem; color: var(--ink);">🌆 საღამო (16:00 – 19:00) — შენელება და განათება</strong>
+                <p style="margin: 4px 0 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45;">
+                  ჩართეთ ოთახში კაშკაშა განათება დაბინდებამდე. გამორთეთ ტელევიზორი და ხმაურიანი მოწყობილობები. მსუბუქი ვახშამი, დამამშვიდებელი მუსიკა.
+                </p>
+              </div>
+
+              <div style="padding: 12px 14px; background: var(--cream); border-radius: var(--radius-sm); border-left: 3px solid var(--navy);">
+                <strong style="display: block; font-size: 0.95rem; color: var(--ink);">🌙 ღამე (20:00 – 07:00) — უსაფრთხო ძილი</strong>
+                <p style="margin: 4px 0 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45;">
+                  შეზღუდეთ სითხე უშუალოდ ძილის წინ (ღამის წამოდგომის პრევენცია). დატოვეთ იატაკის დონეზე სუსტი ორიენტირების შუქი ტუალეტამდე.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <article class="card">
+              <h3 style="color: var(--ink); margin-top: 0;">კვების ადაპტაცია (აპრაქსიისას)</h3>
+              <p style="margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5;">
+                როცა კოვზის გამოყენება რთულდება, ნუ აიძულებთ. შესთავაზეთ საკვები, რომლის ხელით მიღებაც მოსახერხებელია (Finger foods: მოხარშული ბოსტნეულის ნაჭრები, ყველი, ხილის ლებნები). გამოიყენეთ კონტრასტული თეფში.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3 style="color: var(--ink); margin-top: 0;">ჰიდრატაციის წესი და უსაფრთხოება</h3>
+              <p style="margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5;">
+                დემენციის მქონე ადამიანები კარგავენ წყურვილის შეგრძნებას. დეჰიდრატაცია პირდაპირ იწვევს დელირიუმსა და წნევის ვარდნას. შესთავაზეთ წყალი მცირე ყლუპებით ყოველ 1–1.5 საათში, გამჭვირვალე ჭიქით (არა შეკითხვით „გინდა წყალი?“, არამედ მიწოდებით „აი, გრილი წყალია“). <strong>ყლაპვის გაძნელებისას (დისფაგია):</strong> მოერიდეთ ერთბაშად დიდი რაოდენობით სითხის მიცემას სასულეში გადაცდენის (ასპირაციის) პრევენციისთვის.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">ხშირი შეკითხვები</span>
+          <h2>კლინიკური და პრაქტიკული კითხვები</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              რატომ ავიწყდება პაციენტს ახლობლების სახელები და სახეები?
+              <span class="faq-icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-answer">
+              ეს არის აგნოზიისა და რეტროგრადული ამნეზიის შედეგი. საფეთქლისა და თხემის წილების დაზიანების გამო ტვინი კარგავს სახელებისა და სახეების დაკავშირების უნარს. ამის მიუხედავად, არავერბალური და ემოციური მეხსიერება (ნაცნობი ხმის ტემბრი, შეხების სითბო, უსაფრთხოების განცდა) ხანგრძლივად რჩება. რეკომენდებულია პაციენტს თავი შეახსენოთ მშვიდად და უსაყვედუროდ: „მე ნინო ვარ, შენი შვილი“, სატესტო შეკითხვების გარეშე.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              შეიძლება თუ არა აგრესიული ან წინააღმდეგობრივი ქცევა იყოს განზრახული?
+              <span class="faq-icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-answer">
+              არა. დემენციის დროს ზიანდება შუბლის წილი (Frontal Lobe), რომელიც პასუხისმგებელია ქცევის კონტროლზე, თვითკრიტიკასა და ემპათიაზე. პაციენტს აღარ შესწევს მანიპულაციის, განზრახ წვალების ან შურისძიების კოგნიტური უნარი. წინააღმდეგობა ყოველთვის არის ბუნებრივი დაცვითი რეაქცია შეუცნობელ შიშზე, ტკივილზე, სენსორულ გადატვირთვაზე ან უმწეობაზე.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              როგორ ავუხსნათ ბავშვებს ოჯახის წევრის დემენციის დიაგნოზი?
+              <span class="faq-icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-answer">
+              მიაწოდეთ ასაკის შესაბამისი, მარტივი ბიოლოგიური განმარტება: „ეს არის ტვინის დაავადება, რომელიც ნელ-ნელა ართულებს მეხსიერებასა და საუბარს“. აუხსენით, რომ პაციენტის გაბრაზება ან დაბნეულობა დაავადების სიმპტომია და არა ბავშვის დანაშაული. ჩართეთ ბავშვები მარტივ, მშვიდ აქტივობებში: ნახატების დათვალიერება, მუსიკის მოსმენა.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              როდის ხდება აუცილებელი პროფესიონალი მომვლელის ჩართვა?
+              <span class="faq-icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-answer">
+              პროფესიონალი მომვლელის ან დამატებითი რესურსის ჩართვა რეკომენდებულია მაშინვე, როგორც კი პაციენტის უსაფრთხოების რისკები იზრდება (ღამით ხეტიალი, გაზის/ელექტროენერგიის საფრთხე, დაცემის რისკი) ან როდესაც ოჯახის წევრს აღენიშნება ქრონიკული ძილის დეფიციტი და ემოციური გამოფიტვა (Caregiver Burnout). მომვლელის ჯანმრთელობის დაცვა პაციენტის უსაფრთხო მოვლის აუცილებელი წინაპირობაა.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h3 style="font-size: 1.3rem; margin-bottom: 8px;">დემენცია ოჯახში</h3>
+        <p>
+          საინფორმაციო და პრაქტიკული ცნობარი დემენციის, ალცჰეიმერისა და მონათესავე მდგომარეობების მქონე პირთა ოჯახის წევრებისა და მომვლელებისთვის.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--ink-muted);">
+          <strong>პასუხისმგებლობის შეზღუდვა:</strong> პორტალზე განთავსებული მასალები ატარებს საგანმანათლებლო და საინფორმაციო ხასიათს და ეფუძნება საერთაშორისო კლინიკურ გაიდლაინებს (Teepa Snow, Naomi Feil, Alzheimer's Association). ინფორმაცია არ წარმოადგენს სამედიცინო დიაგნოზს ან მკურნალობის დანიშნულებას და არ ცვლის კვალიფიციური ექიმ-სპეციალისტის კონსულტაციას.
+        </p>
+      </div>
+
+      <div>
+        <h4>ძირითადი ცნობარი</h4>
+        <p><a href="#understand">კოგნიტური საფუძვლები</a></p>
+        <p><a href="#vision-approach">მხედველობის ველი და მიახლოება</a></p>
+        <p><a href="#scenarios">ქცევითი სცენარები</a></p>
+        <p><a href="#pain-check">ტკივილის დეკოდირება</a></p>
+        <p><a href="#word-bridges">კომუნიკაცია & Hand-under-Hand</a></p>
+      </div>
+
+      <div>
+        <h4>გარემო და პრაქტიკა</h4>
+        <p><a href="#home-safety">უსაფრთხო გარემო სახლში</a></p>
+        <p><a href="#sundowning">Sundowning სინდრომი</a></p>
+        <p><a href="#breathing">4-7-8 სუნთქვის ტექნიკა</a></p>
+        <p><a href="#red-flags">გადაუდებელი წითელი ალმები</a></p>
+        <p><a href="#visitor-memo">ვიზიტორთა მემორანდუმი</a></p>
+        <p><a href="#routine">მოვლის დღის რუტინა</a></p>
+        <p><a href="#faq">ხშირი შეკითხვები</a></p>
+      </div>
+    </div>
+
+    <div class="wrap footer-bottom">
+      © <span id="copyrightYear">2026</span> დემენცია ოჯახში. საინფორმაციო და პრაქტიკული რესურსი ოჯახებისთვის.
+    </div>
+  </footer>
+
+  <!-- App Toast Container -->
+  <div class="app-toast" id="appToast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/scenarios.js"></script>
+  <script src="js/audio-breathing.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
