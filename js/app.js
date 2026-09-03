@@ -273,8 +273,8 @@ document.addEventListener("DOMContentLoaded", () => {
         scenarioListEl.querySelectorAll(".scenario-nav-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         renderScenarioDetails(s);
-        if (window.innerWidth < 992 && scenarioDetailEl) {
-          scenarioDetailEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (window.innerWidth < 992 && activeScenarioContainer) {
+          activeScenarioContainer.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       });
 
