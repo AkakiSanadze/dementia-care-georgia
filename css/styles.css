@@ -3079,6 +3079,23 @@ blockquote {
   margin-bottom: 0;
 }
 
+.stage-warning-callout {
+  margin-top: 14px;
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.stage-warning-callout strong {
+  color: #DC2626;
+  display: block;
+  margin-bottom: 4px;
+}
+
 /* ==========================================================================
    Header & Drawer About Trigger Buttons
    ========================================================================== */
