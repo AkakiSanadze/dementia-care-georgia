@@ -3541,7 +3541,8 @@ blockquote {
    ========================================================================== */
 
 @media (max-width: 768px) {
-  #headerPrintBtn {
+  #headerPrintBtn,
+  #headerGithubBtn {
     display: none !important;
   }
 }
