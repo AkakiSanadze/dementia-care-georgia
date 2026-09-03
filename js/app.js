@@ -561,6 +561,57 @@ document.addEventListener("DOMContentLoaded", () => {
     printFullBtn.addEventListener("click", () => triggerPrint("full"));
   }
 
+  // 12.1. პროექტის შესახებ (About & Ethics Modal)
+  const aboutModal = document.getElementById("aboutModal");
+  const aboutModalCloseBtn = document.getElementById("aboutModalCloseBtn");
+  const aboutBtns = [
+    document.getElementById("headerAboutBtn"),
+    document.getElementById("drawerAboutBtn"),
+    document.getElementById("footerAboutBtn")
+  ];
+
+  const openAboutModal = () => {
+    if (aboutModal) {
+      aboutModal.removeAttribute("hidden");
+      document.body.style.overflow = "hidden";
+      aboutModalCloseBtn?.focus();
+      if (typeof setNavState === "function") {
+        setNavState(false);
+      }
+    }
+  };
+
+  const closeAboutModal = () => {
+    if (aboutModal) {
+      aboutModal.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+    }
+  };
+
+  aboutBtns.forEach(btn => {
+    if (btn) {
+      btn.addEventListener("click", openAboutModal);
+    }
+  });
+
+  if (aboutModalCloseBtn) {
+    aboutModalCloseBtn.addEventListener("click", closeAboutModal);
+  }
+
+  if (aboutModal) {
+    aboutModal.addEventListener("click", (e) => {
+      if (e.target === aboutModal) {
+        closeAboutModal();
+      }
+    });
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && aboutModal && !aboutModal.hasAttribute("hidden")) {
+      closeAboutModal();
+    }
+  });
+
   // 13. ინტერაქტიული PAINAD კალკულატორი
   const painadCalc = document.getElementById("painadCalculator");
   if (painadCalc) {
