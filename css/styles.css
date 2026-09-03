@@ -253,6 +253,32 @@ p {
   box-shadow: 0 4px 10px rgba(70, 91, 58, 0.25);
 }
 
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+  }
+}
+.desktop-nav-link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.desktop-nav-link:hover {
+  color: var(--teal);
+  background: var(--teal-light);
+  text-decoration: none;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -2135,6 +2161,267 @@ blockquote {
 }
 
 /* ==========================================================================
+   Interactive PAINAD Calculator & Home Safety Checklist
+   ========================================================================== */
+
+.painad-calculator-box {
+  margin-top: 36px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.painad-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.painad-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.painad-item-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.painad-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+@media (min-width: 640px) {
+  .painad-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.painad-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--cream);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.painad-opt strong {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 2px;
+}
+.painad-opt span {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+.painad-opt:hover {
+  border-color: var(--teal);
+  background: var(--teal-light);
+}
+.painad-opt.active {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  box-shadow: 0 0 0 2px var(--teal);
+}
+.painad-opt.active strong {
+  color: var(--teal-mid);
+}
+
+.painad-result-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .painad-result-box {
+    flex-direction: row;
+    text-align: left;
+    gap: 24px;
+  }
+}
+
+.painad-score-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(15, 41, 66, 0.25);
+}
+.painad-score-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.painad-score-max {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.painad-verdict {
+  flex: 1;
+}
+.painad-verdict h4 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.painad-verdict p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.painad-result-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Home Safety Checklist */
+.safety-checklist-box {
+  margin-top: 40px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.checklist-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+  .checklist-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.checklist-progress-wrap {
+  min-width: 240px;
+  background: var(--cream);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.checklist-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.checklist-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.checklist-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal) 0%, var(--teal-mid) 100%);
+  transition: width 0.3s ease;
+}
+
+.checklist-status-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.checklist-items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .checklist-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.checklist-item:hover {
+  border-color: var(--teal);
+}
+.checklist-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.checklist-custom-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--line);
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  color: transparent;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.checklist-item input:checked + .checklist-custom-box {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #FFF;
+}
+.checklist-item input:focus-visible + .checklist-custom-box {
+  box-shadow: var(--focus-ring);
+}
+.checklist-text {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
    Print Styles
    ========================================================================== */
 
@@ -2142,14 +2429,25 @@ blockquote {
   body {
     background: #FFF !important;
     color: #000 !important;
-    font-size: 12pt;
+    font-size: 11pt;
+    line-height: 1.5;
   }
-  .site-header, .app-toast, .btn-row, #themeToggleBtn, #ambientToggleBtn, .font-btn-group, .breathing-section {
+  .site-header, .site-drawer, .drawer-overlay, .app-toast, .btn-row, #themeToggleBtn, #ambientToggleBtn, .font-btn-group, .breathing-section, #navToggle, .painad-result-actions, .category-filter-bar, .search-container {
     display: none !important;
   }
-  .visitor-memo-card {
-    border: 1px solid #999;
-    box-shadow: none;
+  .visitor-memo-card, .painad-calculator-box, .safety-checklist-box, .hero-stat-card, .faq-item {
+    border: 1px solid #CCC !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  .faq-answer {
+    display: block !important;
+    max-height: none !important;
+    opacity: 1 !important;
+  }
+  .wrap {
+    max-width: 100% !important;
+    padding: 0 !important;
   }
 }
 

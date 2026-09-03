@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "კომუნიკაციის წესი: არასოდეს შეეკამათოთ ფაქტებზე. მოახდინეთ ემოციის ვალიდაცია და გადაიტანეთ ყურადღება.",
     "კვების რეკომენდაცია: კოვზის გაძნელებისას გამოიყენეთ ხელით მოსახერხებელი საკვები (Finger foods) და კონტრასტული თეფში.",
     "მომვლელის რესურსი: მომვლელის ემოციური გამოფიტვა პირდაპირ ზრდის პაციენტის აჟიტაციას. დაისვენეთ რეგულარულად.",
-    "კოგნიტური მხარდაჭერა: ნუ შეუმოწმებთ მეხსიერებას შეკითხვებით („გახსოვს?“). ეს იწვევს შფოთვასა და სირცხვილს.",
+    "კოგნიტური მხარდაჭერა: ნუ შეამოწმებთ მეხსიერებას შეკითხვებით („გახსოვს?“). ეს იწვევს შფოთვასა და სირცხვილს.",
     "არავერბალური კონტაქტი: მიუახლოვდით ყოველთვის წინიდან, თვალის დონეზე, და არა მოულოდნელად გვერდიდან ან ზურგიდან.",
     "ჰიგიენის მართვა: თუ პაციენტი კატეგორიულ უარს ამბობს დაბანაზე, გადადეთ პროცედურა და სცადეთ მოგვიანებით ნაწილობრივ.",
     "ქცევის დეკოდირება: უეცარი აგრესია თითქმის ყოველთვის გამოწვეულია ფიზიკური ტკივილით, შიშით ან ინფექციით (მაგ. UTI)."
@@ -466,5 +466,172 @@ document.addEventListener("DOMContentLoaded", () => {
   if (todayNoteEl) {
     const dayIdx = new Date().getDay();
     todayNoteEl.textContent = dailyTips[dayIdx];
+  }
+
+  // 12. ბეჭდვა / PDF ექსპორტი
+  const printBtns = [document.getElementById("headerPrintBtn"), document.getElementById("heroPrintBtn")];
+  printBtns.forEach(btn => {
+    if (btn) {
+      btn.addEventListener("click", () => {
+        window.print();
+      });
+    }
+  });
+
+  // 13. ინტერაქტიული PAINAD კალკულატორი
+  const painadCalc = document.getElementById("painadCalculator");
+  if (painadCalc) {
+    const optButtons = painadCalc.querySelectorAll(".painad-opt");
+    const scoreNumEl = document.getElementById("painadScoreNum");
+    const verdictTitleEl = document.getElementById("painadVerdictTitle");
+    const verdictDescEl = document.getElementById("painadVerdictDesc");
+    const copyBtn = document.getElementById("painadCopyBtn");
+    const resetBtn = document.getElementById("painadResetBtn");
+
+    const categories = ["breathing", "vocalization", "expression", "body", "consolability"];
+
+    const updateScore = () => {
+      let total = 0;
+      const details = [];
+
+      categories.forEach(cat => {
+        const item = painadCalc.querySelector(`.painad-item[data-category="${cat}"]`);
+        if (item) {
+          const activeOpt = item.querySelector(".painad-opt.active");
+          const score = activeOpt ? parseInt(activeOpt.getAttribute("data-score"), 10) : 0;
+          total += score;
+          const label = item.querySelector(".painad-item-label")?.textContent.trim() || cat;
+          const text = activeOpt ? activeOpt.querySelector("span")?.textContent.trim() : "";
+          details.push(`${label}: ${score} ქულა (${text})`);
+        }
+      });
+
+      if (scoreNumEl) scoreNumEl.textContent = total;
+
+      let title = "";
+      let desc = "";
+      if (total === 0) {
+        title = "ტკივილის ობიექტური ნიშნები არ ვლინდება (0 ქულა)";
+        desc = "პაციენტის ქცევა და ფიზიოლოგიური ნიშნები მშვიდია. განაგრძეთ რეგულარული მონიტორინგი.";
+      } else if (total <= 3) {
+        title = `მსუბუქი დისკომფორტი / შესაძლო ტკივილი (${total} ქულა)`;
+        desc = "შეამოწმეთ სხეულის პოზა, მოჭერილი ტანსაცმელი, წყურვილი, შარდის ბუშტი და შებერილობა. მიმართეთ დამამშვიდებელ არაფარმაკოლოგიურ მეთოდებს.";
+      } else if (total <= 6) {
+        title = `ზომიერი ტკივილი (${total} ქულა) — საყურადღებოა!`;
+        desc = "დიდი ალბათობით არსებობს ფიზიკური ტკივილის წყარო (შარდის ინფექცია, ყაბზობა, კბილი, სახსრები). რეკომენდებულია ექიმის კონსულტაცია ტკივილგამაყუჩებლის შესარჩევად.";
+      } else {
+        title = `მწვავე, ძლიერი ტკივილი (${total} ქულა) — გადაუდებელია!`;
+        desc = "პაციენტი განიცდის მძიმე ფიზიკურ ტანჯვას. საჭიროა ექიმის ან სასწრაფო სამედიცინო დახმარების დაუყოვნებლივი ჩართვა!";
+      }
+
+      if (verdictTitleEl) verdictTitleEl.textContent = title;
+      if (verdictDescEl) verdictDescEl.textContent = desc;
+
+      return { total, title, desc, details };
+    };
+
+    optButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".painad-item");
+        if (item) {
+          item.querySelectorAll(".painad-opt").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          updateScore();
+        }
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        categories.forEach(cat => {
+          const item = painadCalc.querySelector(`.painad-item[data-category="${cat}"]`);
+          if (item) {
+            item.querySelectorAll(".painad-opt").forEach(b => b.classList.remove("active"));
+            const first = item.querySelector('.painad-opt[data-score="0"]');
+            if (first) first.classList.add("active");
+          }
+        });
+        updateScore();
+        showToast("PAINAD კალკულატორი განულდა.");
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", () => {
+        const res = updateScore();
+        const textToCopy = `📋 PAINAD ტკივილის შეფასების შედეგი:\nსაერთო ქულა: ${res.total} / 10\nშეფასება: ${res.title}\nრეკომენდაცია: ${res.desc}\n\nდეტალები:\n- ${res.details.join("\n- ")}\n\n(წყარო: დემენცია ოჯახში — dementia-care-georgia.vercel.app)`;
+        safeCopyToClipboard(textToCopy, "PAINAD შეფასების შედეგი დაკოპირდა!", "ტექსტი ვერ დაკოპირდა.");
+      });
+    }
+  }
+
+  // 14. ინტერაქტიული უსაფრთხო სახლის ჩექლისტი
+  const safetyChecklist = document.getElementById("homeSafetyChecklist");
+  if (safetyChecklist) {
+    const checkboxes = safetyChecklist.querySelectorAll(".safety-check");
+    const progressText = document.getElementById("safetyProgressText");
+    const progressBar = document.getElementById("safetyProgressBar");
+    const statusBadge = document.getElementById("safetyStatusBadge");
+
+    const STORAGE_KEY = "dementia_home_safety_audit";
+
+    // აღდგენა localStorage-დან
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      checkboxes.forEach((cb, idx) => {
+        if (saved.includes(idx)) cb.checked = true;
+      });
+    } catch (e) {
+      console.warn("Storage read error", e);
+    }
+
+    const updateProgress = () => {
+      let checkedCount = 0;
+      const savedIndices = [];
+      checkboxes.forEach((cb, idx) => {
+        if (cb.checked) {
+          checkedCount++;
+          savedIndices.push(idx);
+        }
+      });
+
+      const total = checkboxes.length;
+      const pct = Math.round((checkedCount / total) * 100);
+
+      if (progressText) progressText.textContent = `${pct}% (${checkedCount} / ${total})`;
+      if (progressBar) progressBar.style.width = `${pct}%`;
+
+      if (statusBadge) {
+        if (checkedCount === 0) {
+          statusBadge.textContent = "საჭიროებს ადაპტაციას";
+          statusBadge.style.background = "var(--danger-soft)";
+          statusBadge.style.color = "var(--danger)";
+        } else if (checkedCount <= 4) {
+          statusBadge.textContent = "ნაწილობრივ ადაპტირებულია";
+          statusBadge.style.background = "var(--amber-soft)";
+          statusBadge.style.color = "var(--amber)";
+        } else if (checkedCount < total) {
+          statusBadge.textContent = "კარგად ადაპტირებულია";
+          statusBadge.style.background = "var(--teal-light)";
+          statusBadge.style.color = "var(--teal-mid)";
+        } else {
+          statusBadge.textContent = "მაქსიმალურად დაცულია 🎉";
+          statusBadge.style.background = "var(--ok-soft)";
+          statusBadge.style.color = "var(--ok)";
+        }
+      }
+
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(savedIndices));
+      } catch (e) {
+        console.warn("Storage write error", e);
+      }
+    };
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener("change", updateProgress);
+    });
+
+    updateProgress();
   }
 });
