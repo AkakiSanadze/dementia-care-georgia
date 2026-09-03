@@ -3644,6 +3644,76 @@ blockquote {
   display: block;
 }
 
+/* ==========================================================================
+   Header & Mobile Responsive Layout Safeguards
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  #headerPrintBtn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    gap: 6px;
+  }
+  .font-btn-group {
+    display: none !important;
+  }
+  .nav-toggle-text {
+    display: none !important;
+  }
+  .nav-toggle-btn {
+    padding: 8px !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    justify-content: center !important;
+  }
+  .brand {
+    gap: 10px;
+  }
+  .brand-title {
+    font-size: 1.05rem !important;
+  }
+  .brand-subtitle {
+    display: none !important;
+  }
+  .black-box-warning-card {
+    padding: 16px !important;
+  }
+  .black-box-warning-card > div {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    gap: 8px;
+  }
+  .brand-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .brand-title {
+    font-size: 0.95rem !important;
+  }
+  .action-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .nav-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+  }
+  .hero-modules-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3866,74 +3936,6 @@ blockquote {
             <p class="today-note-text" id="todayInspirationalNote">კომუნიკაციის წესი: არასოდეს შეეკამათოთ ფაქტებზე. მოახდინეთ ემოციის ვალიდაცია და გადაიტანეთ ყურადღება.</p>
           </div>
         </div>
-
-        <!-- Comprehensive Neuroanatomy Map (Lobe -> Function -> Dementia Symptom) -->
-        <div class="panel" style="margin-top: 36px; background: var(--paper); border: 1px solid var(--line);">
-          <h3 style="font-size: 1.25rem; margin-top: 0; color: var(--teal); display: flex; align-items: center; gap: 8px;">
-            <span>🧠</span> თავის ტვინის ფუნქციური რუკა და დემენციის ნეიროფსიქოლოგიური სიმპტომები
-          </h3>
-          <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; margin-bottom: 16px;">
-            ტვინის ფუნქციები განაწილებულ ნერვულ ქსელებს ეყრდნობა. კონკრეტული უბნების დაზიანება განაპირობებს იმ ქცევით ცვლილებებს, რომლებიც ხშირად გაუგებარია ოჯახისთვის:
-          </p>
-          <div style="overflow-x: auto;">
-            <table class="audit-scorecard-table" style="font-size: 0.86rem;">
-              <thead>
-                <tr>
-                  <th style="width: 22%;">ტვინის უბანი</th>
-                  <th style="width: 38%;">ძირითადი ნორმალური ფუნქცია</th>
-                  <th style="width: 40%;">დემენციის კლინიკური გამოვლინება</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>ჰიპოკამპი (Hippocampus)</strong><br><span class="model-sub">მეხსიერების კარიბჭე</span></td>
-                  <td>ახალი ეპიზოდური ინფორმაციის მეხსიერებაში ჩაწერა და კონსოლიდაცია.</td>
-                  <td>მოკლევადიანი მეხსიერების გაქრობა; ერთი და იგივე კითხვა ყოველ 2 წუთში; <strong>რიბოს კანონის ტენდენცია:</strong> ახალი ამბები ქრება, ბავშვობის მოგონებები რჩება.</td>
-                </tr>
-                <tr>
-                  <td><strong>შუბლის წილი (Frontal Lobe)</strong><br><span class="model-sub">აღმასრულებელი ცენტრი</span></td>
-                  <td>გადაწყვეტილების მიღება, ქცევის კონტროლი, ემპათია, სოციალური ფილტრები, ინიციატივა.</td>
-                  <td>სოციალური ფილტრების მოშლა (უხამსობა, ტაქტის დეფიციტი FTD-ისას), აპათია, აგრესია, ემპათიის დაკარგვა, საქმის დაგეგმვის შეუძლებლობა.</td>
-                </tr>
-                <tr>
-                  <td><strong>თხემის წილი (Parietal Lobe)</strong><br><span class="model-sub">სივრცითი ორიენტაცია</span></td>
-                  <td>სივრცეში ორიენტაცია, ვიზუოკონსტრუქცია, მიზანმიმართული მოქმედების დაგეგმვა.</td>
-                  <td><strong>აპრაქსია:</strong> ნასწავლი მოქმედებების მოშლა (ფეხსაცმლის, ტანსაცმლის ჩაცმის, კოვზის/დანა-ჩანგლის მოხმარების გაძნელება); დაკარგვა ნაცნობ ოთახში.</td>
-                </tr>
-                <tr>
-                  <td><strong>საფეთქლის წილი (Temporal Lobe)</strong><br><span class="model-sub">ენა და სემანტიკა</span></td>
-                  <td>მეტყველების გაგება, სემანტიკური მეხსიერება, სახეებისა და ობიექტების ცნობა.</td>
-                  <td><strong>აფაზია:</strong> სიტყვების პოვნის ან გაგების გაძნელება; <strong>აგნოზია და პროზოპაგნოზია:</strong> საკუთარი შვილების ან მეუღლის სახის ვერცნობა („უცხო მგონიხარ“).</td>
-                </tr>
-                <tr>
-                  <td><strong>კეფის წილი (Occipital Lobe)</strong><br><span class="model-sub">ვიზუალური დამუშავება</span></td>
-                  <td>ვიზუალური სიგნალების დამუშავება, კონტრასტისა და სიღრმის აღქმა.</td>
-                  <td>მუქი ხალიჩის ორმოდ აღქმა, თეთრ თეფშზე თეთრი საკვების შეუმჩნევლობა; ვიზუალური ყურადღების ველის შევიწროება („გვირაბისებრი ხედვა“).</td>
-                </tr>
-              </tbody>
-            </table>
-          
-          <!-- Antipsychotics Universal Black Box Warning -->
-          <div style="background: rgba(220, 38, 38, 0.08); border: 2px solid #DC2626; border-radius: var(--radius-md); padding: 18px 20px; margin-top: 24px;">
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="font-size: 1.8rem; line-height: 1;">⛔</div>
-              <div>
-                <h4 style="margin: 0 0 6px; color: #B91C1C; font-size: 1.1rem; font-weight: 800;">
-                  კლინიკური გაფრთხილება (Black Box Warning): ანტიფსიქოტიკები და საძილე საშუალებები
-                </h4>
-                <p style="margin: 0 0 8px; font-size: 0.92rem; color: var(--ink); line-height: 1.55;">
-                  <strong>კატეგორიულად დაუშვებელია თვითნებური მიცემა!</strong> საერთაშორისო მარეგულირებლების (FDA, EMA) ოფიციალური გაფრთხილებით, <strong>ყველა ტიპის ანტიფსიქოზური პრეპარატი</strong> (როგორც კლასიკური — ჰალოპერიდოლი, ისე ატიპიური — რისპერიდონი, კვეტიაპინი, ოლანზაპინი) ხანდაზმულ დემენციურ პაციენტებში მნიშვნელოვნად ზრდის <strong>ინსულტისა და სიკვდილიანობის რისკს</strong>.
-                </p>
-                <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5;">
-                  <li><strong>ლევის სხეულაკების დემენცია (LBD):</strong> კლასიკური ნეიროლეპტიკები (ჰალოპერიდოლი) სასიცოცხლოდ საშიშია უკიდურესი ჰიპერმგრძნობელობის გამო!</li>
-                  <li><strong>ბენზოდიაზეპინები (დიაზეპამი, ფენაზეპამი):</strong> მკვეთრად ზრდის ღამით დაცემას, ბარძაყის მოტეხილობას, მწვავე დელირიუმსა და პარადოქსულ აგრესიას.</li>
-                  <li><strong>ექიმის ექსკლუზიური როლი:</strong> ფარმაკოლოგიური ჩარევა განიხილება მხოლოდ როგორც ბოლო რგოლი — როდესაც არაფარმაკოლოგიური (PAC) დეესკალაცია ამოწურულია და არსებობს მძიმე ტანჯვა ან ფიზიკური საფრთხე.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-</div>
-        </div>
       </div>
     </section>
 
@@ -3964,6 +3966,54 @@ blockquote {
             <h3>მეტყველების გაძნელება (აფაზია) და სხეულის ენა</h3>
             <p>მეტყველების ცენტრების დაზიანება ართულებს ტკივილის, შიმშილის, წყურვილის ან დისკომფორტის სიტყვებით გადმოცემას. შედეგად, ადამიანი თავის გასაჭირს გამოხატავს სხეულის ენით — მოუსვენრობით, ყვირილით ან ჭამასა და დაბანაზე უარით.</p>
           </article>
+        </div>
+
+        <!-- Comprehensive Neuroanatomy Map (Lobe -> Function -> Dementia Symptom) -->
+        <div class="panel neuroanatomy-panel" style="margin-top: 40px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 24px;">
+          <h3 style="font-size: 1.25rem; margin-top: 0; color: var(--teal); display: flex; align-items: center; gap: 8px;">
+            <span>🧠</span> თავის ტვინის ფუნქციური რუკა და დემენციის ნეიროფსიქოლოგიური სიმპტომები
+          </h3>
+          <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; margin-bottom: 16px;">
+            ტვინის ფუნქციები განაწილებულ ნერვულ ქსელებს ეყრდნობა. კონკრეტული უბნების დაზიანება განაპირობებს იმ ქცევით ცვლილებებს, რომლებიც ხშირად გაუგებარია ოჯახისთვის:
+          </p>
+          <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius-sm); border: 1px solid var(--line);">
+            <table class="audit-scorecard-table" style="font-size: 0.86rem; margin: 0; width: 100%; min-width: 580px;">
+              <thead>
+                <tr>
+                  <th style="width: 24%;">ტვინის უბანი</th>
+                  <th style="width: 38%;">ძირითადი ნორმალური ფუნქცია</th>
+                  <th style="width: 38%;">დემენციის კლინიკური გამოვლინება</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>ჰიპოკამპი (Hippocampus)</strong><br><span class="model-sub">მეხსიერების კარიბჭე</span></td>
+                  <td>ახალი ეპიზოდური ინფორმაციის მეხსიერებაში ჩაწერა და კონსოლიდაცია.</td>
+                  <td>მოკლევადიანი მეხსიერების გაქრობა; ერთი და იგივე კითხვა ყოველ 2 წუთში; <strong>რიბოს კანონის ტენდენცია:</strong> ახალი ამბები ქრება, ბავშვობის მოგონებები რჩება.</td>
+                </tr>
+                <tr>
+                  <td><strong>შუბლის წილი (Frontal Lobe)</strong><br><span class="model-sub">აღმასრულებელი ცენტრი</span></td>
+                  <td>გადაწყვეტილების მიღება, ქცევის კონტროლი, ემპათია, სოციალური ფილტრები, ინიციატივა.</td>
+                  <td>სოციალური ფილტრების მოშლა (უხამსობა, ტაქტის დეფიციტი FTD-ისას), აპათია, აგრესია, ემპათიის დაკარგვა, საქმის დაგეგმვის შეუძლებლობა.</td>
+                </tr>
+                <tr>
+                  <td><strong>თხემის წილი (Parietal Lobe)</strong><br><span class="model-sub">სივრცითი ორიენტაცია</span></td>
+                  <td>სივრცეში ორიენტაცია, ვიზუოკონსტრუქცია, მიზანმიმართული მოქმედების დაგეგმვა.</td>
+                  <td><strong>აპრაქსია:</strong> ნასწავლი მოქმედებების მოშლა (ფეხსაცმლის, ტანსაცმლის ჩაცმის, კოვზის/დანა-ჩანგლის მოხმარების გაძნელება); დაკარგვა ნაცნობ ოთახში.</td>
+                </tr>
+                <tr>
+                  <td><strong>საფეთქლის წილი (Temporal Lobe)</strong><br><span class="model-sub">ენა და სემანტიკა</span></td>
+                  <td>მეტყველების გაგება, სემანტიკური მეხსიერება, სახეებისა და ობიექტების ცნობა.</td>
+                  <td><strong>აფაზია:</strong> სიტყვების პოვნის ან გაგების გაძნელება; <strong>აგნოზია და პროზოპაგნოზია:</strong> საკუთარი შვილების ან მეუღლის სახის ვერცნობა („უცხო მგონიხარ“).</td>
+                </tr>
+                <tr>
+                  <td><strong>კეფის წილი (Occipital Lobe)</strong><br><span class="model-sub">ვიზუალური დამუშავება</span></td>
+                  <td>ვიზუალური სიგნალების დამუშავება, კონტრასტისა და სიღრმის აღქმა.</td>
+                  <td>მუქი ხალიჩის ორმოდ აღქმა, თეთრ თეფშზე თეთრი საკვების შეუმჩნევლობა; ვიზუალური ყურადღების ველის შევიწროება („გვირაბისებრი ხედვა“).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- 4 Major Dementia Syndromes (State-of-the-art Clinical Breakdown) -->
@@ -4010,6 +4060,26 @@ blockquote {
               <p style="margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5;">
                 ხშირად იწყება შედარებით ახალგაზრდა ასაკში (45–65 წელი). მეხსიერება თავიდან ხელუხლებელია, მაგრამ იცვლება პიროვნება: სოციალური ფილტრების დაკარგვა (უხამსობა, ტაქტის დეფიციტი), აპათია, ემპათიის გაქრობა ან მეტყველების გაღარიბება.
               </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Antipsychotics Universal Black Box Warning -->
+        <div class="black-box-warning-card" style="background: rgba(220, 38, 38, 0.07); border: 2px solid #DC2626; border-radius: var(--radius-md); padding: 20px 22px; margin-top: 32px;">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <div style="font-size: 1.8rem; line-height: 1; flex-shrink: 0;">⛔</div>
+            <div>
+              <h4 style="margin: 0 0 6px; color: #B91C1C; font-size: 1.1rem; font-weight: 800;">
+                კლინიკური გაფრთხილება (Black Box Warning): ანტიფსიქოტიკები და საძილე საშუალებები
+              </h4>
+              <p style="margin: 0 0 8px; font-size: 0.92rem; color: var(--ink); line-height: 1.55;">
+                <strong>კატეგორიულად დაუშვებელია თვითნებური მიცემა!</strong> საერთაშორისო მარეგულირებლების (FDA, EMA) ოფიციალური გაფრთხილებით, <strong>ყველა ტიპის ანტიფსიქოზური პრეპარატი</strong> (როგორც კლასიკური — ჰალოპერიდოლი, ისე ატიპიური — რისპერიდონი, კვეტიაპინი, ოლანზაპინი) ხანდაზმულ დემენციურ პაციენტებში მნიშვნელოვნად ზრდის <strong>ინსულტისა და სიკვდილიანობის რისკს</strong>.
+              </p>
+              <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5;">
+                <li><strong>ლევის სხეულაკების დემენცია (LBD):</strong> კლასიკური ნეიროლეპტიკები (ჰალოპერიდოლი) სასიცოცხლოდ საშიშია უკიდურესი ჰიპერმგრძნობელობის გამო!</li>
+                <li><strong>ბენზოდიაზეპინები (დიაზეპამი, ფენაზეპამი):</strong> მკვეთრად ზრდის ღამით დაცემას, ბარძაყის მოტეხილობას, მწვავე დელირიუმსა და პარადოქსულ აგრესიას.</li>
+                <li><strong>ექიმის ექსკლუზიური როლი:</strong> ფარმაკოლოგიური ჩარევა განიხილება მხოლოდ როგორც ბოლო რგოლი — როდესაც არაფარმაკოლოგიური (PAC) დეესკალაცია ამოწურულია და არსებობს მძიმე ტანჯვა ან ფიზიკური საფრთხე.</li>
+              </ul>
             </div>
           </div>
         </div>

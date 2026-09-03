@@ -3535,3 +3535,73 @@ blockquote {
 .audit-accordion-item.open .audit-accordion-body {
   display: block;
 }
+
+/* ==========================================================================
+   Header & Mobile Responsive Layout Safeguards
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  #headerPrintBtn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    gap: 6px;
+  }
+  .font-btn-group {
+    display: none !important;
+  }
+  .nav-toggle-text {
+    display: none !important;
+  }
+  .nav-toggle-btn {
+    padding: 8px !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    justify-content: center !important;
+  }
+  .brand {
+    gap: 10px;
+  }
+  .brand-title {
+    font-size: 1.05rem !important;
+  }
+  .brand-subtitle {
+    display: none !important;
+  }
+  .black-box-warning-card {
+    padding: 16px !important;
+  }
+  .black-box-warning-card > div {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    gap: 8px;
+  }
+  .brand-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .brand-title {
+    font-size: 0.95rem !important;
+  }
+  .action-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .nav-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+  }
+  .hero-modules-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
