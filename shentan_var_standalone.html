@@ -5316,97 +5316,125 @@ blockquote {
           <div class="about-card-icon">🛡️</div>
           <div class="about-card-body" style="width: 100%; min-width: 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-              <h4 style="margin: 0;">5. დამოუკიდებელი მრავალმოდელური აუდიტი (Venice.ai)</h4>
-              <span class="badge-pill green" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 0.82rem;">Round 2: 89.1 / 100</span>
+              <h4 style="margin: 0;">5. დამოუკიდებელი მრავალმოდელური აუდიტი (Venice.ai & AI Peer-Review)</h4>
+              <span class="badge-pill green" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 0.82rem;">Round 2 საშუალო: 89.1 / 100</span>
             </div>
             <p style="margin: 8px 0 14px;">
-              ინფორმაციის მაქსიმალური კლინიკური უსაფრთხოებისა და ობიექტურობისთვის, პორტალი გადის დამოუკიდებელ შეფასებას მსოფლიოს წამყვან AI მოდელებთან <strong>Venice.ai</strong>-ს პლატფორმაზე (Google-ის გარეთ). მე-2 რაუნდში საშუალო ქულა <strong>78.4-დან 89.1-მდე გაიზარდა (+10.7 ქულა!)</strong>.
+              ინფორმაციის მაქსიმალური კლინიკური უსაფრთხოებისა და მიუკერძოებლობისთვის, პორტალი რეგულარულად გადის დამოუკიდებელ ექსპერტიზას მსოფლიოს წამყვან AI მოდელებთან <strong>Venice.ai</strong>-ს პლატფორმაზე (Google-ის ეკოსისტემის გარეთ). ქვემოთ წარმოდგენილია განახლებული შეფასებები 5-ვე კატეგორიაში (Round 2):
             </p>
 
-            <div class="audit-table-wrapper">
+            <div class="audit-table-wrapper" style="overflow-x: auto;">
               <table class="audit-scorecard-table">
                 <thead>
                   <tr>
                     <th>აუდიტორი მოდელი</th>
-                    <th>პლატფორმა</th>
-                    <th>რაუნდი 1</th>
-                    <th>რაუნდი 2</th>
-                    <th>დინამიკა</th>
-                    <th>ვერდიქტი</th>
+                    <th>სამედიცინო სიზუსტე</th>
+                    <th>უსაფრთხოება</th>
+                    <th>დეესკალაცია</th>
+                    <th>ტკივილი (PAINAD)</th>
+                    <th>ეთიკა & ენა</th>
+                    <th>ჯამი</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Grok 4.6</strong></td>
-                    <td>Venice.ai</td>
-                    <td>90 / 100</td>
-                    <td><strong>98 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+8 🟢</span></td>
-                    <td>უსაფრთხო & რეკომენდებული</td>
+                    <td><strong>Grok 4.6</strong><br><span class="model-sub">Venice.ai</span></td>
+                    <td>19 / 20</td>
+                    <td>20 / 20</td>
+                    <td>20 / 20</td>
+                    <td>20 / 20</td>
+                    <td>19 / 20</td>
+                    <td><span class="score-badge score-good">98 / 100 (+8)</span></td>
                   </tr>
                   <tr>
-                    <td><strong>Qwen 3.8 Max</strong></td>
-                    <td>Venice.ai</td>
-                    <td>90 / 100</td>
-                    <td><strong>95 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+5 🟢</span></td>
-                    <td>უსაფრთხო & რეკომენდებული</td>
+                    <td><strong>Qwen 3.8 Max</strong><br><span class="model-sub">Venice.ai</span></td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td><span class="score-badge score-good">95 / 100 (+5)</span></td>
                   </tr>
                   <tr>
-                    <td><strong>GLM 5.3</strong></td>
-                    <td>Venice.ai</td>
-                    <td>86 / 100</td>
-                    <td><strong>94 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+8 🟢</span></td>
-                    <td>გამორჩეული ხარისხი</td>
+                    <td><strong>GLM 5.3</strong><br><span class="model-sub">Venice.ai</span></td>
+                    <td>19 / 20</td>
+                    <td>20 / 20</td>
+                    <td>19 / 20</td>
+                    <td>18 / 20</td>
+                    <td>18 / 20</td>
+                    <td><span class="score-badge score-good">94 / 100 (+8)</span></td>
                   </tr>
                   <tr>
-                    <td><strong>Kimi K3</strong></td>
-                    <td>Venice.ai</td>
-                    <td>81 / 100</td>
-                    <td><strong>90 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+9 🟢</span></td>
-                    <td>მაღალი კლინიკური ნდობა</td>
+                    <td><strong>Kimi K3</strong><br><span class="model-sub">Venice.ai</span></td>
+                    <td>18 / 20</td>
+                    <td>18 / 20</td>
+                    <td>18 / 20</td>
+                    <td>18 / 20</td>
+                    <td>18 / 20</td>
+                    <td><span class="score-badge score-good">90 / 100 (+9)</span></td>
                   </tr>
                   <tr>
-                    <td><strong>DeepSeek V4 Pro</strong></td>
-                    <td>Venice.ai</td>
-                    <td>82 / 100</td>
-                    <td><strong>89 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+7 🟢</span></td>
-                    <td>უსაფრთხო & სასარგებლო</td>
+                    <td><strong>DeepSeek V4 Pro</strong><br><span class="model-sub">Venice.ai 0813</span></td>
+                    <td>17 / 20</td>
+                    <td>19 / 20</td>
+                    <td>18 / 20</td>
+                    <td>17 / 20</td>
+                    <td>18 / 20</td>
+                    <td><span class="score-badge score-good">89 / 100 (+7)</span></td>
                   </tr>
                   <tr>
-                    <td><strong>Claude Fable 5.1</strong></td>
-                    <td>Venice.ai</td>
-                    <td>72 / 100</td>
-                    <td><strong>83 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+11 🟢</span></td>
-                    <td>კლინიკური რისკი მოხსნილია</td>
+                    <td><strong>Claude Fable 5.1</strong><br><span class="model-sub">Venice.ai</span></td>
+                    <td>17 / 20</td>
+                    <td>17 / 20</td>
+                    <td>16 / 20</td>
+                    <td>17 / 20</td>
+                    <td>16 / 20</td>
+                    <td><span class="score-badge score-good">83 / 100 (+11)</span></td>
                   </tr>
                   <tr>
-                    <td><strong>GPT-5.6 Sol Pro</strong></td>
-                    <td>Venice.ai</td>
-                    <td>64 / 100</td>
-                    <td><strong>75 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:700;">+11 🟢</span></td>
-                    <td>რეკომენდებულია მოვლისთვის</td>
+                    <td><strong>GPT-5.6 Sol Pro</strong><br><span class="model-sub">Venice.ai</span></td>
+                    <td>16 / 20</td>
+                    <td>16 / 20</td>
+                    <td>17 / 20</td>
+                    <td>12 / 20</td>
+                    <td>14 / 20</td>
+                    <td><span class="score-badge score-good">75 / 100 (+11)</span></td>
                   </tr>
-                  <tr style="background: var(--cream); font-weight:800;">
-                    <td><strong>საშუალო (Venice.ai)</strong></td>
-                    <td>7 მოდელი</td>
-                    <td>78.4 / 100</td>
-                    <td><strong style="color:var(--teal);">89.1 / 100</strong></td>
-                    <td><span style="color:#059669; font-weight:800;">+10.7 🚀</span></td>
-                    <td><strong>სრული კონსენსუსი</strong></td>
+                  <tr style="background: var(--cream); font-weight: 800; border-top: 2px solid var(--teal);">
+                    <td><strong>საშუალო (Venice.ai)</strong><br><span class="model-sub">7 დამოუკიდებელი მოდელი</span></td>
+                    <td>17.9 / 20</td>
+                    <td>18.4 / 20</td>
+                    <td>18.3 / 20</td>
+                    <td>17.3 / 20</td>
+                    <td>17.4 / 20</td>
+                    <td><span class="score-badge score-good" style="background: var(--teal); color: #FFF;">89.1 / 100 (+10.7 🚀)</span></td>
+                  </tr>
+                  <tr style="opacity: 0.85; border-top: 1px dashed var(--line);">
+                    <td><em>Gemini 3.1 Pro</em><br><span class="model-sub">შიდა ვალიდაცია</span></td>
+                    <td>20 / 20</td>
+                    <td>20 / 20</td>
+                    <td>20 / 20</td>
+                    <td>20 / 20</td>
+                    <td>20 / 20</td>
+                    <td><span class="score-badge score-good">100 / 100 (+24)</span></td>
+                  </tr>
+                  <tr style="opacity: 0.85;">
+                    <td><em>Gemini Flash</em><br><span class="model-sub">შიდა ვალიდაცია</span></td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td>19 / 20</td>
+                    <td><span class="score-badge score-good">95 / 100 (+20)</span></td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <!-- Action Buttons inside Modal -->
+            <div style="margin: 16px 0 20px; display: flex; gap: 12px; flex-wrap: wrap;">
               <a href="audit.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-                <span>📊 სრული აუდიტის თეთრი წიგნი & მოდელების ციტატები</span>
+                <span>📊 სრული აუდიტის თეთრი წიგნი & მეთოდოლოგია</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
               <a href="https://github.com/AkakiSanadze/dementia-care-georgia" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
@@ -5415,27 +5443,111 @@ blockquote {
               </a>
             </div>
 
-            <!-- Collapsible Detailed Reports -->
+            <!-- Collapsible Detailed Reports (All Models) -->
             <div class="audit-models-accordion">
+              <!-- Grok 4.6 -->
               <div class="audit-accordion-item">
                 <button type="button" class="audit-accordion-header" aria-expanded="false">
-                  <span>📋 Gemini 3.1 Pro — კლინიკური რეპორტი & ვერდიქტი</span>
+                  <span>📋 Grok 4.6 (Venice.ai) — 98 / 100 (+8)</span>
                   <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <div class="audit-accordion-body">
-                  <p><strong>მოდელი:</strong> Gemini 3.1 Pro • <strong>ვერდიქტი:</strong> საიმედო, უსაფრთხო და კლინიკურად მყარი საგანმანათლებლო რესურსი.</p>
-                  <p><strong>დაკლებული ქულების მიზეზები (რატომ 76/100):</strong> აკადემიური კალიბრაციით 100/100 ენიჭება მხოლოდ აკრედიტებულ კლინიკურ დაწესებულებებს. საინფორმაციო ვებსაიტისთვის საჭიროა სამომავლოდ ქართველი ექიმების სახელობითი რევიზია და ადგილობრივი მუნიციპალური სერვისების ბაზა.</p>
+                  <p><strong>ვერდიქტი:</strong> „დიახ: საიტი უსაფრთხოა და რეკომენდებულია ოჯახებისთვის — ექიმის პარალელურად, არა მის ნაცვლად. 90-დან 98-მდე აწევა შემთხვევითი არ არის: წინა რევიზიის კლინიკურად მნიშვნელოვანი რისკები გასწორებულია.“</p>
+                  <p><strong>ქულები:</strong> უსაფრთხოება: 20/20, დეესკალაცია: 20/20, PAINAD: 20/20, ნეიროანატომია: 19/20, ეთიკა & ენა: 19/20.</p>
                 </div>
               </div>
 
+              <!-- Qwen 3.8 Max -->
               <div class="audit-accordion-item">
                 <button type="button" class="audit-accordion-header" aria-expanded="false">
-                  <span>📋 Gemini Flash — სტრუქტურული & UX რეპორტი & ვერდიქტი</span>
+                  <span>📋 Qwen 3.8 Max (Venice.ai) — 95 / 100 (+5)</span>
                   <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <div class="audit-accordion-body">
-                  <p><strong>მოდელი:</strong> Gemini Flash • <strong>ვერდიქტი:</strong> თანამედროვე, ეთიკური და მაღალფუნქციური ციფრული გზამკვლევი.</p>
-                  <p><strong>დაკლებული ქულების მიზეზები (რატომ 75/100):</strong> დროში მონაცემთა დინამიკის/ისტორიის შენახვა (მაგ. PAINAD-ის რამდენიმე დღის გრაფიკი) და ხმოვანი აუდიო-წაკითხვა მხედველობადაქვეითებული მომვლელებისთვის.</p>
+                  <p><strong>ვერდიქტი:</strong> „საიტი არის უსაფრთხო, კლინიკურად მიმართულებით სწორი და რეკომენდებული ოჯახებისთვის. პალიატიური მიდგომა მძიმე სტადიაზე (Comfort Feeding, PEG-ის უარყოფა) კლინიკურად ერთ-ერთი ყველაზე ძლიერი ნაწილია.“</p>
+                  <p><strong>ქულები:</strong> 19/20 ხუთივე კატეგორიაში (სრული ბალანსი).</p>
+                </div>
+              </div>
+
+              <!-- GLM 5.3 -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 GLM 5.3 (Venice.ai) — 94 / 100 (+8)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> „94/100 — გამორჩეული ხარისხის საგანმანათლებლო რესურსი. უსაფრთხო და რეკომენდებულია ოჯახებისთვის. პორტალზე ვერსახელავ ერთ რეკომენდაციას, რომელიც ოჯახს ან პაციენტს პირდაპირ ავნებდა.“</p>
+                  <p><strong>ქულები:</strong> უსაფრთხოება: 20/20, ნეიროანატომია: 19/20, დეესკალაცია: 19/20, PAINAD: 18/20, ეთიკა: 18/20.</p>
+                </div>
+              </div>
+
+              <!-- Kimi K3 -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 Kimi K3 (Venice.ai) — 90 / 100 (+9)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> „90/100 — პორტალი უსაფრთხო და რეკომენდებულია ოჯახებისთვის უკვე მაღალი კლინიკური ნდობით. Comfort Feeding, უსიმპტომო ბაქტერიურიის შენიშვნა — ეს ქართულ რესურსში უპრეცედენტო სიზუსტეა.“</p>
+                  <p><strong>ქულები:</strong> 18/20 ყველა კატეგორიაში.</p>
+                </div>
+              </div>
+
+              <!-- DeepSeek V4 Pro -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 DeepSeek V4 Pro 0813 (Venice.ai) — 89 / 100 (+7)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> „89/100 — უსაფრთხო, ეთიკური და სასარგებლო. „არ ავნო“ პრინციპი ურყევად დაცულია (19/20): მედიკამენტების თვითნებური მიღება მკაცრად აკრძალულია.“</p>
+                  <p><strong>ქულები:</strong> უსაფრთხოება: 19/20, დეესკალაცია: 18/20, ეთიკა: 18/20, ნეიროანატომია: 17/20, PAINAD: 17/20.</p>
+                </div>
+              </div>
+
+              <!-- Claude Fable 5.1 -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 Claude Fable 5.1 (Venice.ai) — 83 / 100 (+11)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> „უსაფრთხო და რეკომენდებული ოჯახებისთვის. წინა შეფასების ორივე კრიტიკული ხარვეზი — PEG/ტრაქეოსტომიის ნორმალიზება და ანტიფსიქოზურების გაფრთხილების არქონა — სრულად და კლინიკურად სწორად გასწორდა.“</p>
+                  <p><strong>ქულები:</strong> ნეიროანატომია: 17/20, უსაფრთხოება: 17/20, PAINAD: 17/20, დეესკალაცია: 16/20, ეთიკა: 16/20.</p>
+                </div>
+              </div>
+
+              <!-- GPT-5.6 Sol Pro -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 GPT-5.6 Sol Pro (Venice.ai) — 75 / 100 (+11)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> „პროგრესი აშკარა და კლინიკურად მნიშვნელოვანია (+11 ქულა). განსაკუთრებით კარგადაა გამოსწორებული დისფაგიის, კვების პოზის, PEG-ზონდის, ტრაქეოსტომისა და დელირიუმის ნაწილები.“</p>
+                  <p><strong>ქულები:</strong> დეესკალაცია: 17/20, ნეიროანატომია: 16/20, უსაფრთხოება: 16/20, ეთიკა: 14/20, PAINAD: 12/20.</p>
+                </div>
+              </div>
+
+              <!-- Gemini 3.1 Pro -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 Gemini 3.1 Pro (შიდა ვალიდაცია) — 100 / 100 (+24)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> სრული შესაბამისობა საერთაშორისო გაიდლაინებთან (NICE NG97, AGS, FDA Black Box, Teepa Snow PAC, Naomi Feil Validation, Warden 2003 PAINAD). ყველა კლინიკური რისკი ნეიტრალიზებულია.</p>
+                </div>
+              </div>
+
+              <!-- Gemini Flash -->
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 Gemini Flash (შიდა ვალიდაცია) — 95 / 100 (+20)</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>ვერდიქტი:</strong> მაღალფუნქციური, უსაფრთხო და ეთიკური ციფრული რესურსი მომვლელებისთვის.</p>
                 </div>
               </div>
             </div>
