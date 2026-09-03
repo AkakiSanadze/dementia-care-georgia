@@ -411,11 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (printMemoBtn) {
-    printMemoBtn.addEventListener("click", () => {
-      window.print();
-    });
-  }
+
 
   if (copyMemoBtn && typeof VISITOR_MEMO !== "undefined") {
     copyMemoBtn.addEventListener("click", () => {
@@ -492,15 +488,78 @@ document.addEventListener("DOMContentLoaded", () => {
     todayNoteEl.textContent = dailyTips[dayIdx];
   }
 
-  // 12. ბეჭდვა / PDF ექსპორტი
-  const printBtns = [document.getElementById("headerPrintBtn"), document.getElementById("heroPrintBtn")];
+  // 12. ბეჭდვა / PDF ექსპორტი (მოდალი და დუალური რეჟიმები)
+  const printModal = document.getElementById("printChoiceModal");
+  const printModalCloseBtn = document.getElementById("printModalCloseBtn");
+  const printCompactBtn = document.getElementById("printCompactBtn");
+  const printFullBtn = document.getElementById("printFullBtn");
+
+  const openPrintModal = () => {
+    if (printModal) {
+      printModal.removeAttribute("hidden");
+      document.body.style.overflow = "hidden";
+      printModalCloseBtn?.focus();
+    }
+  };
+
+  const closePrintModal = () => {
+    if (printModal) {
+      printModal.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+    }
+  };
+
+  const triggerPrint = (mode) => {
+    closePrintModal();
+    document.body.classList.remove("print-mode-compact", "print-mode-full");
+    document.body.classList.add(mode === "full" ? "print-mode-full" : "print-mode-compact");
+    
+    setTimeout(() => {
+      window.print();
+    }, 60);
+  };
+
+  window.addEventListener("afterprint", () => {
+    document.body.classList.remove("print-mode-compact", "print-mode-full");
+  });
+
+  const printBtns = [
+    document.getElementById("headerPrintBtn"),
+    document.getElementById("heroPrintBtn"),
+    document.getElementById("printMemoBtn")
+  ];
+
   printBtns.forEach(btn => {
     if (btn) {
-      btn.addEventListener("click", () => {
-        window.print();
-      });
+      btn.addEventListener("click", openPrintModal);
     }
   });
+
+  if (printModalCloseBtn) {
+    printModalCloseBtn.addEventListener("click", closePrintModal);
+  }
+
+  if (printModal) {
+    printModal.addEventListener("click", (e) => {
+      if (e.target === printModal) {
+        closePrintModal();
+      }
+    });
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && printModal && !printModal.hasAttribute("hidden")) {
+      closePrintModal();
+    }
+  });
+
+  if (printCompactBtn) {
+    printCompactBtn.addEventListener("click", () => triggerPrint("compact"));
+  }
+
+  if (printFullBtn) {
+    printFullBtn.addEventListener("click", () => triggerPrint("full"));
+  }
 
   // 13. ინტერაქტიული PAINAD კალკულატორი
   const painadCalc = document.getElementById("painadCalculator");
