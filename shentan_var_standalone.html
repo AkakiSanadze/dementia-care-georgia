@@ -3464,6 +3464,146 @@ blockquote {
   margin: 0;
 }
 
+/* --- Multi-Model AI Audit Styles --- */
+.hero-audit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  background: var(--paper);
+  border: 1px solid var(--teal-light);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.hero-audit-badge:hover {
+  background: var(--cream);
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.audit-table-wrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+}
+
+.audit-scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+  background: var(--paper);
+}
+
+.audit-scorecard-table th {
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 700;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--line);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.audit-scorecard-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  vertical-align: middle;
+}
+
+.audit-scorecard-table .model-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.score-badge.score-good {
+  background: rgba(63, 107, 69, 0.12);
+  color: var(--teal-dark);
+  border: 1px solid rgba(63, 107, 69, 0.25);
+}
+
+.score-badge.score-pending {
+  background: rgba(180, 83, 9, 0.12);
+  color: #B45309;
+  border: 1px solid rgba(180, 83, 9, 0.25);
+}
+
+.audit-models-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.audit-accordion-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper-soft);
+  overflow: hidden;
+}
+
+.audit-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.audit-accordion-header:hover {
+  background: var(--cream);
+}
+
+.audit-accordion-header .chevron-icon {
+  transition: transform var(--transition-fast);
+}
+
+.audit-accordion-item.open .audit-accordion-header .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.audit-accordion-body {
+  display: none;
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  background: var(--paper);
+}
+
+.audit-accordion-item.open .audit-accordion-body {
+  display: block;
+}
+
 </style>
 </head>
 <body>
@@ -3596,6 +3736,9 @@ blockquote {
           <p class="lead">
             დემენცია თავის ტვინის პროგრესირებადი ნეიროდეგენერაციული მდგომარეობაა და არა „ხასიათის გაფუჭება“ ან დაბერების ბუნებრივი ნორმა. ეს გზამკვლევი ეფუძნება საერთაშორისო კლინიკურ გაიდლაინებს (Teepa Snow, Naomi Feil, Alzheimer's Association) და ოჯახის წევრებს აწვდის ზუსტ, პრაქტიკულ რეკომენდაციებს ქცევითი სიმპტომების მართვის, კომუნიკაციისა და ყოველდღიური მოვლისთვის.
           </p>
+          <div style="margin-bottom: 14px;">
+            <a class="hero-audit-badge" id="heroAuditBadge" href="#aboutModal" role="button">🛡️ AI კლინიკური აუდიტი: შემოწმებულია (76/100)</a>
+          </div>
           <div class="disclaimer-alert" style="background: var(--cream); padding: 14px 18px; border-radius: var(--radius-sm); border-left: 4px solid var(--teal); margin-bottom: 24px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; border: 1px solid var(--line); border-left-width: 4px; border-left-color: var(--teal);">
             <strong>სამედიცინო შენიშვნა:</strong> პლატფორმაზე განთავსებული მასალები ატარებს საგანმანათლებლო და საინფორმაციო ხასიათს და არ ცვლის ექიმ-სპეციალისტის (ნევროლოგის, გერიატრის, ფსიქიატრის) კონსულტაციასა და ინდივიდუალურ მკურნალობის გეგმას.
           </div>
@@ -4946,6 +5089,83 @@ blockquote {
               <li>საიტზე არ გამოიყენება მომხმარებლის თვალთვალის სისტემები (Trackers), სარეკლამო სკრიპტები ან მაიდენტიფიცირებელი ქუქი-ფაილები (Cookies).</li>
               <li>პორტალზე მოძიებული ინფორმაცია თუ კალკულატორში შეყვანილი პარამეტრები ხელმისაწვდომია მხოლოდ და მხოლოდ მომხმარებლის პირად მოწყობილობაში.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Section 5: Multi-Model Clinical AI Audit & Scorecard -->
+        <div class="about-card highlight-about" id="aboutAuditSection">
+          <div class="about-card-icon">🛡️</div>
+          <div class="about-card-body" style="width: 100%; min-width: 0;">
+            <h4>5. მრავალმოდელური დამოუკიდებელი აუდიტი (AI Peer-Review)</h4>
+            <p>
+              ინფორმაციის ობიექტურობისა და კლინიკური უსაფრთხოების უზრუნველსაყოფად, პორტალი გადის რეგულარულ, მიუკერძოებელ აუდიტს მსოფლიოს წამყვან ხელოვნური ინტელექტის მოდელებთან 5 ძირითად კატეგორიაში (100-ქულიანი სისტემით).
+            </p>
+
+            <div class="audit-table-wrapper">
+              <table class="audit-scorecard-table">
+                <thead>
+                  <tr>
+                    <th>აუდიტორი მოდელი</th>
+                    <th>სამედიცინო სიზუსტე</th>
+                    <th>უსაფრთხოება</th>
+                    <th>დეესკალაცია</th>
+                    <th>ტკივილი (PAINAD)</th>
+                    <th>ეთიკა & ენა</th>
+                    <th>ჯამი</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Gemini 3.1 Pro</strong><br><span class="model-sub">კლინიკური ექსპერტიზა</span></td>
+                    <td>15 / 20</td>
+                    <td>16 / 20</td>
+                    <td>15 / 20</td>
+                    <td>15 / 20</td>
+                    <td>15 / 20</td>
+                    <td><span class="score-badge score-good">76 / 100</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gemini Flash</strong><br><span class="model-sub">სტრუქტურული & UX აუდიტი</span></td>
+                    <td>15 / 20</td>
+                    <td>15 / 20</td>
+                    <td>16 / 20</td>
+                    <td>14 / 20</td>
+                    <td>15 / 20</td>
+                    <td><span class="score-badge score-good">75 / 100</span></td>
+                  </tr>
+                  <tr class="audit-pending-row">
+                    <td><strong>გარე მოდელები (Venice / Claude / GPT)</strong><br><span class="model-sub">დამოუკიდებელი აუდიტი</span></td>
+                    <td colspan="5" style="text-align: center; font-style: italic; color: var(--ink-soft);">მუშავდება და ემატება ეტაპობრივად...</td>
+                    <td><span class="score-badge score-pending">პროცესშია</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Collapsible Detailed Reports -->
+            <div class="audit-models-accordion">
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 Gemini 3.1 Pro — კლინიკური რეპორტი & ვერდიქტი</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>მოდელი:</strong> Gemini 3.1 Pro • <strong>ვერდიქტი:</strong> საიმედო, უსაფრთხო და კლინიკურად მყარი საგანმანათლებლო რესურსი.</p>
+                  <p><strong>დაკლებული ქულების მიზეზები (რატომ 76/100):</strong> აკადემიური კალიბრაციით 100/100 ენიჭება მხოლოდ აკრედიტებულ კლინიკურ დაწესებულებებს. საინფორმაციო ვებსაიტისთვის საჭიროა სამომავლოდ ქართველი ექიმების სახელობითი რევიზია და ადგილობრივი მუნიციპალური სერვისების ბაზა.</p>
+                </div>
+              </div>
+
+              <div class="audit-accordion-item">
+                <button type="button" class="audit-accordion-header" aria-expanded="false">
+                  <span>📋 Gemini Flash — სტრუქტურული & UX რეპორტი & ვერდიქტი</span>
+                  <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="audit-accordion-body">
+                  <p><strong>მოდელი:</strong> Gemini Flash • <strong>ვერდიქტი:</strong> თანამედროვე, ეთიკური და მაღალფუნქციური ციფრული გზამკვლევი.</p>
+                  <p><strong>დაკლებული ქულების მიზეზები (რატომ 75/100):</strong> დროში მონაცემთა დინამიკის/ისტორიის შენახვა (მაგ. PAINAD-ის რამდენიმე დღის გრაფიკი) და ხმოვანი აუდიო-წაკითხვა მხედველობადაქვეითებული მომვლელებისთვის.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -6938,6 +7158,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateProgress();
   }
+
+  // 12.2. AI აუდიტის აკორდეონი და Hero ბეიჯი
+  const heroAuditBadge = document.getElementById("heroAuditBadge");
+  if (heroAuditBadge) {
+    heroAuditBadge.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (typeof openAboutModal === "function") {
+        openAboutModal();
+        setTimeout(() => {
+          const auditSec = document.getElementById("aboutAuditSection");
+          auditSec?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+      }
+    });
+  }
+
+  document.querySelectorAll(".audit-accordion-header").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".audit-accordion-item");
+      const isOpen = item?.classList.contains("open");
+      document.querySelectorAll(".audit-accordion-item").forEach(other => {
+        other.classList.remove("open");
+        other.querySelector(".audit-accordion-header")?.setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen && item) {
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
 });
 
 </script>

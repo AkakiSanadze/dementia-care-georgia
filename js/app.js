@@ -768,4 +768,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateProgress();
   }
+
+  // 12.2. AI აუდიტის აკორდეონი და Hero ბეიჯი
+  const heroAuditBadge = document.getElementById("heroAuditBadge");
+  if (heroAuditBadge) {
+    heroAuditBadge.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (typeof openAboutModal === "function") {
+        openAboutModal();
+        setTimeout(() => {
+          const auditSec = document.getElementById("aboutAuditSection");
+          auditSec?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+      }
+    });
+  }
+
+  document.querySelectorAll(".audit-accordion-header").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".audit-accordion-item");
+      const isOpen = item?.classList.contains("open");
+      document.querySelectorAll(".audit-accordion-item").forEach(other => {
+        other.classList.remove("open");
+        other.querySelector(".audit-accordion-header")?.setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen && item) {
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
 });
