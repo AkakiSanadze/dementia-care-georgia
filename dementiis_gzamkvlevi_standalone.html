@@ -3713,6 +3713,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2800);
   };
 
+  const safeCopyToClipboard = async (text, toastMessage) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        window.showAppToast(toastMessage);
+        return;
+      }
+    } catch (e) {
+      // Fallback below
+    }
+
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      window.showAppToast(toastMessage);
+    } catch (err) {
+      window.showAppToast(toastMessage);
+    }
+  };
+
   // 2. თემისა და შრიფტის მასშტაბირების სისტემა
   const themeToggleBtn = document.getElementById("themeToggleBtn");
   const fontDecreaseBtn = document.getElementById("fontDecreaseBtn");
@@ -3924,9 +3952,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (copyBtn) {
       copyBtn.addEventListener("click", () => {
         const text = decodeURIComponent(copyBtn.getAttribute("data-quote") || "");
-        navigator.clipboard.writeText(text).then(() => {
-          window.showAppToast("ფრაზა დაკოპირდა ბუფერში");
-        });
+        safeCopyToClipboard(text, "ფრაზა დაკოპირდა ბუფერში");
       });
     }
   };
@@ -4030,9 +4056,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const copyBtn = card.querySelector(".copy-mini-btn");
       if (copyBtn) {
         copyBtn.addEventListener("click", () => {
-          navigator.clipboard.writeText(bridge.healing).then(() => {
-            window.showAppToast("ფრაზა დაკოპირდა");
-          });
+          safeCopyToClipboard(bridge.healing, "ფრაზა დაკოპირდა");
         });
       }
 
@@ -4075,9 +4099,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       text += `გთხოვთ გაითვალისწინოთ — ეს დაგვეხმარება სიმშვიდისა და სიყვარულის შენარჩუნებაში. ❤️`;
 
-      navigator.clipboard.writeText(text).then(() => {
-        window.showAppToast("სტუმრის მემორანდუმი დაკოპირდა. შეგიძლიათ გაუგზავნოთ მესენჯერში.");
-      });
+      safeCopyToClipboard(text, "სტუმრის მემორანდუმი დაკოპირდა. შეგიძლიათ გაუგზავნოთ მესენჯერში.");
     });
   }
 
