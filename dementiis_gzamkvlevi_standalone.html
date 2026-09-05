@@ -326,6 +326,8 @@ p {
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
   transition: border-color 0.3s ease, background 0.3s ease;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .header-inner {
@@ -333,18 +335,20 @@ p {
   align-items: center;
   justify-content: space-between;
   min-height: var(--header-h);
-  gap: 16px;
+  gap: 12px;
+  max-width: 100%;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: var(--ink);
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 1.25rem;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .brand:hover {
   text-decoration: none;
@@ -361,7 +365,7 @@ p {
 .brand-title {
   font-family: var(--font-serif);
   font-weight: 800;
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   letter-spacing: -0.01em;
   color: var(--ink);
   white-space: nowrap;
@@ -376,25 +380,25 @@ p {
   white-space: nowrap;
 }
 
+@media (max-width: 1280px) {
+  .brand-subtitle {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .brand-title {
     font-size: 1.05rem;
   }
-  .brand-subtitle {
-    font-size: 0.66rem;
-  }
-}
-
-@media (max-width: 520px) {
   .brand-subtitle {
     display: none;
   }
 }
 
 .brand-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
   background: linear-gradient(135deg, var(--olive) 0%, var(--olive-mid) 100%);
   color: #FFF;
   display: grid;
@@ -407,6 +411,8 @@ p {
   display: none;
   align-items: center;
   gap: 2px;
+  flex-shrink: 1;
+  min-width: 0;
 }
 @media (min-width: 1024px) {
   .desktop-nav {
@@ -416,9 +422,9 @@ p {
 .desktop-nav-link {
   color: var(--ink-soft);
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 6px 8px;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -432,13 +438,14 @@ p {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .action-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
@@ -446,6 +453,7 @@ p {
   place-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 .action-btn:hover {
   border-color: var(--olive);
@@ -462,15 +470,16 @@ p {
 .font-btn-group {
   display: inline-flex;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 11px;
   background: var(--paper);
   overflow: hidden;
+  flex-shrink: 0;
 }
 .font-btn {
   border: none;
   background: transparent;
-  padding: 8px 12px;
-  font-size: 0.85rem;
+  padding: 6px 10px;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   color: var(--ink);
@@ -480,24 +489,30 @@ p {
   background: var(--olive-light);
 }
 
-/* ==========================================================================
-   Header Sandwich Menu Toggle (Desktop & Mobile)
-   ========================================================================== */
+.audit-back-btn {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .audit-back-btn {
+    display: grid;
+  }
+}
 
 .nav-toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--ink);
-  padding: 8px 16px;
+  padding: 7px 12px;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-height: 42px;
+  min-height: 40px;
+  flex-shrink: 0;
 }
 .nav-toggle-btn:hover {
   background: var(--teal-light);
@@ -3650,6 +3665,37 @@ blockquote {
    Header & Mobile Responsive Layout Safeguards
    ========================================================================== */
 
+/* Laptops & Tablets: under 1280px */
+@media (max-width: 1280px) {
+  .header-actions {
+    gap: 6px;
+  }
+  .nav-toggle-text {
+    display: none !important;
+  }
+  .nav-toggle-btn {
+    padding: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    justify-content: center !important;
+    border-radius: 11px !important;
+  }
+  .desktop-nav-link {
+    font-size: 0.80rem;
+    padding: 5px 6px;
+  }
+}
+
+/* Hide GitHub button from header under 1180px - it's already in the menu drawer */
+@media (max-width: 1180px) {
+  #headerGithubBtn {
+    display: none !important;
+  }
+}
+
+/* Tablets and below: under 768px */
 @media (max-width: 768px) {
   #headerPrintBtn,
   #headerGithubBtn {
@@ -3657,9 +3703,10 @@ blockquote {
   }
 }
 
+/* Mobile: under 640px */
 @media (max-width: 640px) {
   .header-actions {
-    gap: 6px;
+    gap: 5px;
   }
   .font-btn-group {
     display: none !important;
@@ -3669,19 +3716,30 @@ blockquote {
   }
   .nav-toggle-btn {
     padding: 8px !important;
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
     justify-content: center !important;
+    border-radius: 10px !important;
   }
   .brand {
-    gap: 10px;
+    gap: 8px;
+  }
+  .brand-icon {
+    width: 36px !important;
+    height: 36px !important;
   }
   .brand-title {
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
   }
   .brand-subtitle {
     display: none !important;
+  }
+  .action-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
   }
   .black-box-warning-card {
     padding: 16px !important;
@@ -3694,23 +3752,23 @@ blockquote {
 
 @media (max-width: 420px) {
   .brand {
-    gap: 8px;
+    gap: 6px;
   }
   .brand-icon {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .brand-title {
+    font-size: 0.92rem !important;
+  }
+  .action-btn {
     width: 36px !important;
     height: 36px !important;
   }
-  .brand-title {
-    font-size: 0.95rem !important;
-  }
-  .action-btn {
-    width: 38px !important;
-    height: 38px !important;
-  }
   .nav-toggle-btn {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
   }
   .hero-modules-grid {
     grid-template-columns: 1fr !important;
