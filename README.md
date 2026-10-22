@@ -21,7 +21,8 @@
 
 ## ტექნოლოგიური სტეკი
 - სუფთა HTML5, CSS3 (Nordic Clinical Modern დიზაინი) და Vanilla JavaScript.
-- Web Audio API ბრაუზერში დამამშვიდებელი ბგერების (White/Pink Noise & Chimes) სინთეზისთვის.
+- **PWA (Progressive Web App)**: სრული 100% ოფლაინ მხარდაჭერა (Service Worker, Web App Manifest, Cache Storage, ინსტალაციის UI Desktop/Android/iOS მოწყობილობებზე).
+- Web Audio API ბრაუზერში დამამშვიდებელი ბგერების (White/Pink Noise & Chimes) სინთეზისთვის (არ საჭიროებს ინტერნეტს ან გარე აუდიო ფაილებს).
 - ადაპტური დიზაინი (Desktop, Tablet, Mobile) და ღამის/დღის რეჟიმის მხარდაჭერა.
 
 ## პასუხისმგებლობის შეზღუდვა (Medical Disclaimer)

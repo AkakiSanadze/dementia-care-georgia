@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI კლინიკური აუდიტი და ხარისხის რეესტრი — დემენციის მოვლა</title>
   <meta name="description" content="პორტალ „დემენციის მოვლა“-ს დამოუკიდებელი მრავალმოდელური კლინიკური აუდიტის ანგარიში Venice.ai პლატფორმაზე: Grok 4.6, Qwen 3.8 Max, GLM 5.3, Kimi K3, DeepSeek V4 Pro, Claude Fable 5.1, GPT-5.6 Sol Pro.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0D9488" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F2942" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="დემენცია">
+  <meta name="application-name" content="დემენციის მოვლა">
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .audit-page-hero {
@@ -652,6 +662,10 @@
     </div>
   </footer>
 
+  <!-- Offline Status Indicator -->
+  <div class="offline-indicator" id="offlineIndicator" role="status" aria-live="polite"></div>
+
   <script src="js/app.js"></script>
+  <script src="js/pwa.js"></script>
 </body>
 </html>

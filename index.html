@@ -32,6 +32,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
+  <!-- Web App Manifest & PWA Meta -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0D9488" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F2942" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="დემენცია">
+  <meta name="application-name" content="დემენციის მოვლა">
+
   <!-- Google Fonts (Georgian) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,6 +147,15 @@
 
       <!-- Header Action Controls -->
       <div class="header-actions">
+        <!-- PWA Install Button (Shown when installable) -->
+        <button class="action-btn header-install-btn" id="headerInstallBtn" type="button" aria-label="აპლიკაციის დაინსტალირება" title="აპლიკაციის დაინსტალირება (PWA)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </button>
+
         <!-- GitHub Link -->
         <a class="action-btn" id="headerGithubBtn" href="https://github.com/AkakiSanadze/dementia-care-georgia" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository (Open Source)" title="GitHub (Open Source)">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -229,6 +248,14 @@
     </div>
 
     <div class="drawer-footer">
+      <button class="drawer-install-btn" id="drawerInstallBtn" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>აპლიკაციის დაინსტალირება</span>
+      </button>
       <p class="drawer-footer-text">
         საინფორმაციო და პრაქტიკული რესურსი დემენციის მქონე პირთა ოჯახებისთვის.
       </p>
@@ -2764,12 +2791,67 @@
     </div>
   </section>
 
+  <!-- Offline Status Indicator -->
+  <div class="offline-indicator" id="offlineIndicator" role="status" aria-live="polite"></div>
+
   <!-- App Toast Container -->
   <div class="app-toast" id="appToast" role="status" aria-live="polite"></div>
+
+  <!-- Floating PWA Install Banner -->
+  <aside class="pwa-install-banner" id="pwaInstallBanner" aria-label="აპლიკაციის დაინსტალირება">
+    <div class="pwa-banner-media">
+      <div class="pwa-banner-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </div>
+      <div class="pwa-banner-text">
+        <strong class="pwa-banner-title">დააინსტალირეთ აპლიკაცია</strong>
+        <span class="pwa-banner-desc">გამოიყენეთ გზამკვლევი 100%-ით ოფლაინში, ინტერნეტის გარეშე</span>
+      </div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button type="button" class="btn btn-primary" id="bannerInstallBtn">დაყენება</button>
+      <button type="button" class="pwa-close-btn" id="bannerCloseBtn" aria-label="ბანერის დახურვა">✕</button>
+    </div>
+  </aside>
+
+  <!-- iOS Safari Install Modal -->
+  <div class="ios-install-modal" id="iosInstallModal" role="dialog" aria-modal="true" aria-labelledby="iosModalTitle">
+    <div class="ios-modal-backdrop" id="iosModalBackdrop"></div>
+    <div class="ios-modal-card">
+      <div class="ios-modal-header">
+        <h3 class="ios-modal-title" id="iosModalTitle">
+          <span>📱</span> ინსტალაცია iPhone / iPad-ზე
+        </h3>
+        <button type="button" class="ios-modal-close" id="iosModalCloseBtn" aria-label="დახურვა">✕</button>
+      </div>
+      <ol class="ios-modal-steps">
+        <li class="ios-modal-step">
+          <span class="ios-step-num">1</span>
+          <span class="ios-step-text">Safari-ს ქვედა პანელზე დააჭირეთ გაზიარების ღილაკს <strong>„გაზიარება“ (Share 📤)</strong></span>
+        </li>
+        <li class="ios-modal-step">
+          <span class="ios-step-num">2</span>
+          <span class="ios-step-text">მენიუში ჩამოწიეთ და აირჩიეთ <strong>„Add to Home Screen“ (ეკრანზე დამატება ➕)</strong></span>
+        </li>
+        <li class="ios-modal-step">
+          <span class="ios-step-num">3</span>
+          <span class="ios-step-text">ზედა მარჯვენა კუთხეში დააჭირეთ <strong>„Add“ (დამატება)</strong></span>
+        </li>
+      </ol>
+      <p class="ios-modal-note">
+        აპლიკაცია გამოჩნდება თქვენს სამუშაო ეკრანზე და იმუშავებს შეუფერხებლად ოფლაინ რეჟიმშიც!
+      </p>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/scenarios.js"></script>
   <script src="js/audio-breathing.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/pwa.js"></script>
 </body>
 </html>

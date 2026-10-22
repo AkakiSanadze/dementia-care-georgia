@@ -1,0 +1,102 @@
+{
+  "name": "დემენციის მოვლა — პრაქტიკული გზამკვლევი ოჯახისთვის",
+  "short_name": "დემენციის მოვლა",
+  "description": "დემენციის მოვლა: პრაქტიკული და კლინიკური გზამკვლევი ოჯახებისთვის. ქცევითი სიმპტომების მართვა, კომუნიკაცია, PAINAD ტკივილის შეფასება და უსაფრთხო გარემო.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0D9488",
+  "lang": "ka",
+  "dir": "ltr",
+  "categories": [
+    "medical",
+    "health",
+    "education",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "PAINAD ტკივილის შეფასება",
+      "short_name": "ტკივილის შეფასება",
+      "description": "არავერბალური პაციენტის ტკივილის კალკულატორი",
+      "url": "/#pain-check",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "ქცევითი სცენარები და ალგორითმები",
+      "short_name": "სცენარები",
+      "description": "8 კრიზისული სიტუაცია და დეესკალაცია",
+      "url": "/#scenarios",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "4-7-8 დამამშვიდებელი სუნთქვა",
+      "short_name": "სუნთქვა",
+      "description": "მომვლელის თვითრეგულაცია და ბუნების ხმები",
+      "url": "/#breathing",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "გადაუდებელი წითელი ალმები",
+      "short_name": "წითელი ალმები",
+      "description": "დელირიუმი, FAST ინსულტის პროტოკოლი, დეჰიდრატაცია",
+      "url": "/#red-flags",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
